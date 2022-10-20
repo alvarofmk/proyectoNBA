@@ -1,0 +1,24 @@
+<mat-form-field>
+    <mat-label>Año</mat-label>
+    <mat-select [(ngModel)]="year" (valueChange)="changeYear()">
+        <mat-option *ngFor="let yearSelect of yearList" [value]="yearSelect">
+            {{yearSelect}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<div id="contenedor" fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <div *ngFor="let player of playerList" style="width: 275px;">
+        <mat-card class="example-card" [routerLink]="['/details-player', player.personId]">
+            <img mat-card-image [src]="viewImg(player.personId)" style="width: 150px;" alt="Player photo"
+                onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
+
+            <mat-card-content>
+                <h2>{{player.firstName}} {{player.lastName}}</h2>
+                <img mat-card-image [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 50px;"
+                    alt="Team logo">
+                <h3>{{showTeam(player.teamId)}}</h3>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
