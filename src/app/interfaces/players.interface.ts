@@ -30,7 +30,7 @@ export interface Draft {
     seasonYear: string;
 }
 
-export interface Standard {
+export interface Player {
     firstName: string;
     lastName: string;
     temporaryDisplayName: string;
@@ -188,14 +188,14 @@ export interface Utah {
 }
 
 export interface League {
-    standard: Standard[];
+    standard: Player[];
     africa: any[];
     sacramento: Sacramento[];
     vegas: Vega[];
     utah: Utah[];
 }
 
-export interface RootObject {
+export interface PlayerResponse {
     _internal: Internal;
     league: League;
 }
