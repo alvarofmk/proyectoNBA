@@ -12,6 +12,8 @@
       <mat-card-title>{{team.fullName}}</mat-card-title>
       <mat-card-subtitle>{{team.city}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="teamURLbase1 + team.teamId + teamURLbase2" alt="Logo">
+    <a [routerLink]="'/teams/'+ year + '/' + team.urlName">
+      <img mat-card-image [src]="teamURLbase1 + team.teamId + teamURLbase2" alt="Logo">
+    </a>
   </mat-card>
 </div>
