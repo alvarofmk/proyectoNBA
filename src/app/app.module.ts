@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { FormsModule } from '@angular/forms';
 import { PlayersComponent } from './components/player-list/players.component';
+import { FrontPageComponent } from './components/front-page/front-page.component';
 import { DetailsPlayersComponent } from './components/details-players/details-players.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { DetailsPlayersComponent } from './components/details-players/details-pl
     AppComponent,
     TeamListComponent,
     PlayersComponent,
+    FrontPageComponent,
     DetailsPlayersComponent
   ],
   imports: [
