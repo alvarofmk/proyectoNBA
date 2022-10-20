@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialImportsModule } from './material-imports/material-imports.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TeamListComponent } from './components/team-list/team-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeamListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialImportsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
