@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { FormsModule } from '@angular/forms';
 import { PlayersComponent } from './components/player-list/players.component';
+import { FrontPageComponent } from './components/front-page/front-page.component';
 import { DetailsPlayersComponent } from './components/details-players/details-players.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { MaterialImportsModule } from './material-imports/material-imports.module';
@@ -18,7 +19,8 @@ import { MaterialImportsModule } from './material-imports/material-imports.modul
     TeamListComponent,
     PlayersComponent,
     DetailsPlayersComponent,
-    TeamDetailsComponent
+    TeamDetailsComponent,
+    FrontPageComponent
   ],
   imports: [
     BrowserModule,
