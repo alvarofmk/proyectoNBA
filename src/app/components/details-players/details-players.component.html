@@ -1,1 +1,73 @@
-<p>details-players works!</p>
+<div id="contenedor" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+    <mat-card class="example-card">
+        <img mat-card-image [src]="viewImg(player.personId)" style="width: 500px;" alt="Player photo"
+            onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
+
+        <mat-card-content>
+            <h2>{{player.firstName}} {{player.lastName}}</h2>
+            <img mat-card-image [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 100px;"
+                alt="Team logo">
+            <p>Nombre: {{player.temporaryDisplayName}}.</p>
+            <p>Fecha de nacimiento: {{player.dateOfBirthUTC}}.</p>
+            <p>País de origen: {{player.country}}.</p>
+            <p>Equipo universitario: {{player.collegeName}}.</p>
+            <p>Equipo drafteado: {{teamDrafted(player.draft)}}.</p>
+            <p>Año de debut: {{player.nbaDebutYear}}.</p>
+            <p>Años como profesional: {{player.yearsPro}}.</p>
+            <p>{{player.isActive? 'En activo.': 'Retirado.'}}</p>
+            <p>Número: {{player.jersey}}.</p>
+            <p>Posición: {{position(player.pos)}}.</p>
+            <p>Altura: {{player.heightMeters}} metros.</p>
+            <p>Peso: {{player.weightKilograms}} kg.</p>
+            <!--<p>Antiguos equipos:</p>
+            <ul *ngFor="let team of teamsPlayed(player.teams)">
+                <li>{{team}}.</li>
+            </ul>-->
+            <p>Equipos jugados: {{teamsPlayed(player.teams)}}.</p>
+        </mat-card-content>
+
+        <mat-card-content>
+            <p>Estadísticas de la temporada {{year}}:</p>
+            <p>Totales:</p>
+            <ul>
+                <li>Partidos jugados: {{summary.gamesPlayed}}.</li>
+                <li>Minutos: {{summary.min}}.</li>
+                <li>Partidos titular: {{summary.gamesStarted}}.</li>
+                <li>Puntos: {{summary.points}}.</li>
+                <li>Asistencias: {{summary.assists}}.</li>
+                <li>Bloqueos: {{summary.blocks}}.</li>
+                <li>Robos: {{summary.steals}}.</li>
+                <li>Pérdidas de balón: {{summary.turnovers}}.</li>
+                <li>Rebotes ofensivos: {{summary.offReb}}.</li>
+                <li>Rebotes defensivos: {{summary.defReb}}.</li>
+                <li>Rebotes totales: {{summary.totReb}}.</li>
+                <li>Faltas personales cometidas: {{summary.pFouls}}.</li>
+                <li>Dobles-dobles: {{summary.dd2}}.</li>
+                <li>Triples-dobles: {{summary.td3}}.</li>
+            </ul>
+
+            <p>Por partido:</p>
+            <ul>
+                <li>Puntos: {{summary.ppg}}.</li>
+                <li>Rebotes: {{summary.rpg}}.</li>
+                <li>Asistencias: {{summary.apg}}.</li>
+                <li>Bloqueos: {{summary.bpg}}.</li>
+                <li>Minutos: {{summary.mpg}}.</li>
+                <li>Robos: {{summary.spg}}.</li>
+            </ul>
+
+            <p>Porcentajes:</p>
+            <ul>
+                <li>Tiros de campo lanzados: {{summary.fga}}.</li>
+                <li>Tiros de campo encestados: {{summary.fgm}}.</li>
+                <li>% Tiros de campo encestados: {{summary.fgp}}.</li>
+                <li>Tiros de tres lanzados: {{summary.tpa}}.</li>
+                <li>Tiros de tres encestados: {{summary.tpm}}.</li>
+                <li>% Tiros de tres encestados: {{summary.tpp}}.</li>
+                <li>Tiros libres lanzados: {{summary.fta}}.</li>
+                <li>Tiros libres encestados: {{summary.ftm}}.</li>
+                <li>% Tiros libres encestados: {{summary.ftp}}.</li>
+            </ul>
+        </mat-card-content>
+    </mat-card>
+</div>

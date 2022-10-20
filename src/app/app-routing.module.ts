@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'front-page', component: FrontPageComponent },
   { path: 'teams', component: TeamListComponent },
   { path: 'players', component: PlayersComponent },
-  { path: 'details-player/:id', component: DetailsPlayersComponent },
+  { path: 'details-player/:id/:year', component: DetailsPlayersComponent },
 ]
 
 @NgModule({
