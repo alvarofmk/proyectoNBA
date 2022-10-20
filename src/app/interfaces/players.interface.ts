@@ -17,7 +17,7 @@ export interface TeamSitesOnly {
     freeAgentCode: string;
 }
 
-export interface Team {
+export interface TeamPlayed {
     teamId: string;
     seasonStart: string;
     seasonEnd: string;
@@ -46,7 +46,7 @@ export interface Player {
     weightKilograms: string;
     dateOfBirthUTC: string;
     teamSitesOnly: TeamSitesOnly;
-    teams: Team[];
+    teams: TeamPlayed[];
     draft: Draft;
     nbaDebutYear: string;
     yearsPro: string;

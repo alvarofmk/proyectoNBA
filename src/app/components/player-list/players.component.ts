@@ -53,6 +53,4 @@ export class PlayersComponent implements OnInit {
     }
     return undefined
   }
-
-  //Detalles con playerProfile
 }

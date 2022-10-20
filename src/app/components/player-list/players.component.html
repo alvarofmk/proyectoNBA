@@ -9,7 +9,7 @@
 
 <div id="contenedor" fxLayout="row wrap" fxLayoutAlign="space-around center">
     <div *ngFor="let player of playerList" style="width: 275px;">
-        <mat-card class="example-card" [routerLink]="['/details-player', player.personId]">
+        <mat-card class="example-card" [routerLink]="['/details-player', player.personId, year]">
             <img mat-card-image [src]="viewImg(player.personId)" style="width: 150px;" alt="Player photo"
                 onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
 

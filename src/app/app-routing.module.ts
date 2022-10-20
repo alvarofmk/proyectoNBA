@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'teams/:year/:teamName', component: TeamDetailsComponent },
   { path: 'front-page', component: FrontPageComponent },
   { path: 'players', component: PlayersComponent },
-  { path: 'details-player/:id', component: DetailsPlayersComponent },
+  { path: 'details-player/:id/:year', component: DetailsPlayersComponent },
 ]
 
 @NgModule({
