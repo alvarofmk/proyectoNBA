@@ -9,12 +9,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { FormsModule } from '@angular/forms';
 import { PlayersComponent } from './components/players/players.component';
+import { TeamDetailsComponent } from './components/team-details/team-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamListComponent,
-    PlayersComponent
+    PlayersComponent,
+    TeamDetailsComponent
   ],
   imports: [
     BrowserModule,
