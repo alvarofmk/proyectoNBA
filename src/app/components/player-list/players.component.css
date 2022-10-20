@@ -8,6 +8,10 @@ div {
     float: left;
 }
 
+.mat-card {
+    margin-top: 50px;
+}
+
 .mat-card-image {
     margin: 0 auto;
 }
