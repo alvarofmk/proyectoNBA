@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ULR_BASE_API: "http://data.nba.net/data"
+  URL_BASE_API: "http://data.nba.net/data"
 };
 
 /*
