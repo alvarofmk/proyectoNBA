@@ -1,15 +1,23 @@
-<div id="contenedor" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
-    <mat-card class="example-card">
-        <img mat-card-image [src]="viewImg(player.personId)" style="width: 500px;" alt="Player photo"
-            onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
-
-        <mat-card-content>
+<div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+        <div>
+            <img mat-card-image [src]="viewImg(player.personId)" style="width: 500px;" alt="Player photo"
+                onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
             <h2>{{player.firstName}} {{player.lastName}}</h2>
-            <img mat-card-image [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 100px;"
+        </div>
+
+        <div>
+            <img mat-card-image [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 150px;"
                 alt="Team logo">
+            <!--<p>NOMBRE EQUIPO</p>-->
             <p>Nombre: {{player.temporaryDisplayName}}.</p>
             <p>Fecha de nacimiento: {{player.dateOfBirthUTC}}.</p>
+            <p>Altura: {{player.heightMeters}} metros.</p>
+            <p>Peso: {{player.weightKilograms}} kg.</p>
             <p>País de origen: {{player.country}}.</p>
+        </div>
+
+        <div>
             <p>Equipo universitario: {{player.collegeName}}.</p>
             <p>Equipo drafteado: {{teamDrafted(player.draft)}}.</p>
             <p>Año de debut: {{player.nbaDebutYear}}.</p>
@@ -17,57 +25,119 @@
             <p>{{player.isActive? 'En activo.': 'Retirado.'}}</p>
             <p>Número: {{player.jersey}}.</p>
             <p>Posición: {{position(player.pos)}}.</p>
-            <p>Altura: {{player.heightMeters}} metros.</p>
-            <p>Peso: {{player.weightKilograms}} kg.</p>
-            <!--<p>Antiguos equipos:</p>
-            <ul *ngFor="let team of teamsPlayed(player.teams)">
-                <li>{{team}}.</li>
-            </ul>-->
-            <p>Equipos jugados: {{teamsPlayed(player.teams)}}.</p>
-        </mat-card-content>
+        </div>
 
-        <mat-card-content>
-            <p>Estadísticas de la temporada {{year}}:</p>
-            <p>Totales:</p>
-            <ul>
-                <li>Partidos jugados: {{summary.gamesPlayed}}.</li>
-                <li>Minutos: {{summary.min}}.</li>
-                <li>Partidos titular: {{summary.gamesStarted}}.</li>
-                <li>Puntos: {{summary.points}}.</li>
-                <li>Asistencias: {{summary.assists}}.</li>
-                <li>Bloqueos: {{summary.blocks}}.</li>
-                <li>Robos: {{summary.steals}}.</li>
-                <li>Pérdidas de balón: {{summary.turnovers}}.</li>
-                <li>Rebotes ofensivos: {{summary.offReb}}.</li>
-                <li>Rebotes defensivos: {{summary.defReb}}.</li>
-                <li>Rebotes totales: {{summary.totReb}}.</li>
-                <li>Faltas personales cometidas: {{summary.pFouls}}.</li>
-                <li>Dobles-dobles: {{summary.dd2}}.</li>
-                <li>Triples-dobles: {{summary.td3}}.</li>
-            </ul>
+        <div>
+            <table>
+                <tr>
+                    <th colspan="2">ANTIGUOS EQUIPOS</th>
+                </tr>
+                <tr *ngFor="let team of teamsPlayed(player.teams)">
+                    <td><img mat-card-image [src]="teamURLbase1 + checkTeamId(team) + teamURLbase2" style="width: 60px;"
+                        alt="Team logo"></td>
+                    <td>{{team}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-            <p>Por partido:</p>
-            <ul>
-                <li>Puntos: {{summary.ppg}}.</li>
-                <li>Rebotes: {{summary.rpg}}.</li>
-                <li>Asistencias: {{summary.apg}}.</li>
-                <li>Bloqueos: {{summary.bpg}}.</li>
-                <li>Minutos: {{summary.mpg}}.</li>
-                <li>Robos: {{summary.spg}}.</li>
-            </ul>
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
+        <div id="stats">
+            <table>
+                <tr>
+                    <th>ESTADÍSTICAS TEMPORADA {{year}}</th>
+                </tr>
+            </table>
 
-            <p>Porcentajes:</p>
-            <ul>
-                <li>Tiros de campo lanzados: {{summary.fga}}.</li>
-                <li>Tiros de campo encestados: {{summary.fgm}}.</li>
-                <li>% Tiros de campo encestados: {{summary.fgp}}.</li>
-                <li>Tiros de tres lanzados: {{summary.tpa}}.</li>
-                <li>Tiros de tres encestados: {{summary.tpm}}.</li>
-                <li>% Tiros de tres encestados: {{summary.tpp}}.</li>
-                <li>Tiros libres lanzados: {{summary.fta}}.</li>
-                <li>Tiros libres encestados: {{summary.ftm}}.</li>
-                <li>% Tiros libres encestados: {{summary.ftp}}.</li>
-            </ul>
-        </mat-card-content>
-    </mat-card>
+            <table>
+                <tr>
+                    <th colspan="14">TOTALES</th>
+                </tr>
+                <tr>
+                    <th>Partidos jugados</th>
+                    <th>Minutos</th>
+                    <th>Partidos titular</th>
+                    <th>Puntos</th>
+                    <th>Asistencias</th>
+                    <th>Bloqueos</th>
+                    <th>Robos</th>
+                    <th>Pérdidas de balón</th>
+                    <th>Rebotes ofensivos</th>
+                    <th>Rebotes defensivos</th>
+                    <th>Rebotes totales</th>
+                    <th>Faltas personales cometidas</th>
+                    <th>Dobles-dobles</th>
+                    <th>Triples-dobles</th>
+                </tr>
+                <tr>
+                    <td>{{summary.gamesPlayed}}</td>
+                    <td>{{summary.min}}</td>
+                    <td>{{summary.gamesStarted}}</td>
+                    <td>{{summary.points}}</td>
+                    <td>{{summary.assists}}</td>
+                    <td>{{summary.blocks}}</td>
+                    <td>{{summary.steals}}</td>
+                    <td>{{summary.turnovers}}</td>
+                    <td>{{summary.offReb}}</td>
+                    <td>{{summary.defReb}}</td>
+                    <td>{{summary.totReb}}</td>
+                    <td>{{summary.pFouls}}</td>
+                    <td>{{summary.dd2}}</td>
+                    <td>{{summary.td3}}</td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th colspan="6">POR PARTIDO</th>
+                </tr>
+                <tr>
+                    <th>Puntos</th>
+                    <th>Rebotes</th>
+                    <th>Asistencias</th>
+                    <th>Bloqueos</th>
+                    <th>Minutos</th>
+                    <th>Robos</th>
+                </tr>
+                <tr>
+                    <td>{{summary.ppg}}</td>
+                    <td>{{summary.rpg}}</td>
+                    <td>{{summary.apg}}</td>
+                    <td>{{summary.bpg}}</td>
+                    <td>{{summary.mpg}}</td>
+                    <td>{{summary.spg}}</td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th colspan="11">DE TIRO</th>
+                </tr>
+                <tr>
+                    <th>Tiros de campo lanzados</th>
+                    <td>{{summary.fga}}</td>
+                    <th>Tiros de tres lanzados</th>
+                    <td>{{summary.tpa}}</td>
+                    <th>Tiros libres lanzados</th>
+                    <td>{{summary.fta}}</td>
+                </tr>
+                <tr>
+                    <th>Tiros de campo encestados</th>
+                    <td>{{summary.fgm}}</td>
+                    <th>Tiros de tres encestados</th>
+                    <td>{{summary.tpm}}</td>
+                    <th>Tiros libres encestados</th>
+                    <td>{{summary.ftm}}</td>
+                </tr>
+                <tr>
+                    <th>% Tiros de campo</th>
+                    <td>{{summary.fgp}}</td>
+                    <th>% Tiros de tres</th>
+                    <td>{{summary.tpp}}</td>
+                    <th>% Tiros libres</th>
+                    <td>{{summary.ftp}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
