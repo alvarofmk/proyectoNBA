@@ -53,7 +53,7 @@ export class DetailsPlayersComponent implements OnInit {
   }
 
   viewImg(personId: string) {
-    return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${personId}.png`
+    return `https://cdn.nba.com/headshots/nba/latest/1040x760/${personId}.png`
   }
 
   showTeam(teamId: string) {
@@ -95,8 +95,8 @@ export class DetailsPlayersComponent implements OnInit {
   }
 
   checkTeamId(team: string) {
-    for(let teamL of this.teamList) {
-      if(team == teamL.fullName){
+    for (let teamL of this.teamList) {
+      if (team == teamL.fullName) {
         return teamL.teamId
       }
     }

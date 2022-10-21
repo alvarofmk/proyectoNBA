@@ -37,7 +37,7 @@ export class PlayersComponent implements OnInit {
   }
 
   viewImg(id: string) {
-    return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`
+    return `https://cdn.nba.com/headshots/nba/latest/1040x760/${id}.png`
   }
 
   changeYear() {
