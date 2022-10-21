@@ -14,6 +14,7 @@ import { TeamService } from 'src/app/services/team.service';
 export class DetailsPlayersComponent implements OnInit {
 
   id: string = '';
+  color: string = '';
   player: Player = {} as Player
   summary: CareerSummary = {} as CareerSummary
   playerList: Player[] = [];
@@ -108,5 +109,72 @@ export class DetailsPlayersComponent implements OnInit {
       }
     }
     return this.teamDraft
+  }
+
+  bgc() {
+    if (this.player.teamId == '1610612737') {
+      this.color = 'background-color: rgb(200, 16, 46);'
+    } else if (this.player.teamId == '1610612738') {
+      this.color = 'background-color: rgb(0, 122, 51);'
+    } else if (this.player.teamId == '1610612751') {
+      this.color = 'background-color: rgb(0, 0, 0);'
+    } else if (this.player.teamId == '1610612766') {
+      this.color = 'background-color: rgb(29, 17, 96);'
+    } else if (this.player.teamId == '1610612741') {
+      this.color = 'background-color: rgb(206, 17, 65);'
+    } else if (this.player.teamId == '1610612739') {
+      this.color = 'background-color: rgb(134, 0, 56);'
+    } else if (this.player.teamId == '1610612742') {
+      this.color = 'background-color: rgb(0, 83, 188);'
+    } else if (this.player.teamId == '1610612743') {
+      this.color = 'background-color: rgb(13, 34, 64);'
+    } else if (this.player.teamId == '1610612765') {
+      this.color = 'background-color: rgb(200,16,46);'
+    } else if (this.player.teamId == '1610612744') {
+      this.color = 'background-color: rgb(29, 66, 138);'
+    } else if (this.player.teamId == '1610612745') {
+      this.color = 'background-color: rgb(206,17,65);'
+    } else if (this.player.teamId == '1610612754') {
+      this.color = 'background-color: rgb(0, 45, 98);'
+    } else if (this.player.teamId == '1610612746') {
+      this.color = 'background-color: rgb(200,16,46);'
+    } else if (this.player.teamId == '1610612747') {
+      this.color = 'background-color: rgb(85, 37, 130);'
+    } else if (this.player.teamId == '1610612763') {
+      this.color = 'background-color: rgb(93, 118, 169);'
+    } else if (this.player.teamId == '1610612748') {
+      this.color = 'background-color: rgb(152, 0, 46);'
+    } else if (this.player.teamId == '1610612749') {
+      this.color = 'background-color: rgb(0, 71, 27);'
+    } else if (this.player.teamId == '1610612750') {
+      this.color = 'background-color: rgb(12, 35, 64);'
+    } else if (this.player.teamId == '1610612740') {
+      this.color = 'background-color: rgb(0, 22, 65);'
+    } else if (this.player.teamId == '1610612752') {
+      this.color = 'background-color: rgb(0, 107, 182);'
+    } else if (this.player.teamId == '1610612760') {
+      this.color = 'background-color: rgb(0, 125, 195);'
+    } else if (this.player.teamId == '1610612753') {
+      this.color = 'background-color: rgb(0, 125, 197);'
+    } else if (this.player.teamId == '1610612755') {
+      this.color = 'background-color: rgb(0, 107, 182);'
+    } else if (this.player.teamId == '1610612756') {
+      this.color = 'background-color: rgb(29, 17, 96);'
+    } else if (this.player.teamId == '1610612757') {
+      this.color = 'background-color: rgb(224, 58, 62);'
+    } else if (this.player.teamId == '1610612758') {
+      this.color = 'background-color: rgb(91,43,130);'
+    } else if (this.player.teamId == '1610612759') {
+      this.color = 'background-color: rgb(196, 206, 211);'
+    } else if (this.player.teamId == '1610612761') {
+      this.color = 'background-color: rgb(206, 17, 65);'
+    } else if (this.player.teamId == '1610612762') {
+      this.color = 'background-color: rgb(0, 43, 92);'
+    } else if (this.player.teamId == '1610612764') {
+      this.color = 'background-color: rgb(0,43,92);'
+    } else {
+      this.color = 'background-color: white;'
+    }
+    return this.color;
   }
 }
