@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ScheduleResponse } from '../interfaces/schedule.interface';
+import { TeamRosterResponse } from '../interfaces/team-roster.interface';
 import { TeamResponse } from '../interfaces/teams.interface';
 
 @Injectable({
@@ -15,4 +17,11 @@ export class TeamService {
     return this.http.get<TeamResponse>(`${environment.URL_BASE_API}/10s/prod/v1/${year}/teams.json`);
   }
 
+  public getTeamRoster(year: number, teamName: string):Observable<TeamRosterResponse>{
+    return this.http.get<TeamRosterResponse>(`${environment.URL_BASE_API}/10s/prod/v1/${year}/teams/${teamName}/roster.json`);
+  }
+
+  public getTeamSchedule(year: number, teamName: string):Observable<ScheduleResponse>{
+    return this.http.get<ScheduleResponse>(`${environment.URL_BASE_API}/10s/prod/v1/${year}/teams/${teamName}/schedule.json`);
+  }
 }

@@ -1,0 +1,12 @@
+.teamHeader img{
+    height: 500px;
+}
+.playerList img{
+    height: 50px;
+}
+.matchList img{
+    height: 50px;
+}
+h1, h2, h3, h4, h5{
+    font-family: 'nba';
+}
