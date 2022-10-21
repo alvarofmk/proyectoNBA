@@ -83,11 +83,24 @@ export class DetailsPlayersComponent implements OnInit {
     for (let team of teams) {
       for (let teamL of this.teamList) {
         if (team.teamId == teamL.teamId) {
-          this.teamPlayed.push(teamL.fullName)
+          if (this.teamPlayed.length == 0) {
+            this.teamPlayed.push(teamL.fullName)
+          } else if (!this.teamPlayed.includes(teamL.fullName)) {
+            this.teamPlayed.push(teamL.fullName)
+          }
         }
       }
     }
     return this.teamPlayed
+  }
+
+  checkTeamId(team: string) {
+    for(let teamL of this.teamList) {
+      if(team == teamL.fullName){
+        return teamL.teamId
+      }
+    }
+    return undefined
   }
 
   teamDrafted(draft: Draft) {
