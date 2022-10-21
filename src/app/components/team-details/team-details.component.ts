@@ -4,6 +4,7 @@ import { Player } from 'src/app/interfaces/players.interface';
 import { Team } from 'src/app/interfaces/teams.interface';
 import { TeamService } from 'src/app/services/team.service';
 import { PlayersService } from 'src/app/services/players.service';
+import { ScheduleResponse } from 'src/app/interfaces/schedule.interface';
 
 @Component({
   selector: 'app-team-details',
@@ -12,11 +13,13 @@ import { PlayersService } from 'src/app/services/players.service';
 })
 export class TeamDetailsComponent implements OnInit {
 
-
+  teamURLbase1: string = 'https://cdn.nba.com/logos/nba/'
+  teamURLbase2: string = '/global/L/logo.svg'
   teamWwrapper: Team | undefined;
   teamDetails: Team = {} as Team;
   teamRoster: Player[] = [];
   year: number = 0;
+  teamSchedule: ScheduleResponse = {} as ScheduleResponse;
 
   constructor(private teamService: TeamService, private playerService: PlayersService, private route: ActivatedRoute) { }
 
@@ -35,7 +38,12 @@ export class TeamDetailsComponent implements OnInit {
           this.teamRoster = allPlayersResponse.league.standard.filter(player => rosterResponse.league.standard.players.map(playerFlat => playerFlat.personId).includes(player.personId));
         })
       })
+    this.teamService.getTeamSchedule(this.year, teamUrlName).subscribe(response => this.teamSchedule = response)
     })
+  }
+
+  viewImg(id: string) {
+    return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`
   }
 
 }
