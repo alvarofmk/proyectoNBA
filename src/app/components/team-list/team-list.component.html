@@ -1,3 +1,10 @@
+<div class="mainHeader" fxLayout="column" fxLayoutAlign=" center">
+  <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba">
+  <div fxLayout="row" fxLayoutGap="20px">
+    <a routerLink="/teams">Teams</a>
+    <a routerLink="/players">Players</a>
+  </div>
+</div>
 <mat-form-field>
   <mat-label>Año</mat-label>
   <mat-select [(ngModel)]="year" (valueChange)="changeYear()">

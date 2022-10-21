@@ -10,3 +10,18 @@ mat-card{
     width: 100%;
     padding: 2%;
 }
+.mainHeader{
+    background-color: black;
+    width: 100%;
+    height: 300px;
+}
+.mainHeader img{
+    height: 80%;
+}
+.mainHeader a{
+    text-decoration: none;
+    color: white;
+    font-family: 'nba';
+    font-size: 2em;
+    border-bottom: solid white 3px;
+}

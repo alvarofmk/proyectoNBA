@@ -2,3 +2,8 @@
     font-family: 'nba';
     src: url(../assets/nba-lakers.ttf);
 }
+:root {
+    --blue: rgb(29,66,138);
+    --red: rgb(200,16,46);
+    --white: rgb(255,255,255);
+}
