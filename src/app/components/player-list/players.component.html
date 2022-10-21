@@ -7,8 +7,17 @@
     </mat-select>
 </mat-form-field>
 
+<mat-form-field style="margin-left: 20px;">
+    <mat-label>Equipos</mat-label>
+    <mat-select [(ngModel)]="filteredTeamList" multiple (selectionChange)="changeList()">
+        <mat-option *ngFor="let team of teamList" [value]="team">
+            {{team.fullName}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
 <div id="contenedor" fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <div *ngFor="let player of playerList" style="width: 275px;">
+    <div *ngFor="let player of filteredPlayerList" style="width: 275px;">
         <mat-card class="example-card" [routerLink]="['/details-player', player.personId, year]">
             <img mat-card-image [src]="viewImg(player.personId)" style="width: 250px;" alt="Player photo"
                 onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />

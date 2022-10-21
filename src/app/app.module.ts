@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TeamListComponent } from './components/team-list/team-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayersComponent } from './components/player-list/players.component';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { DetailsPlayersComponent } from './components/details-players/details-players.component';
@@ -30,7 +30,8 @@ import { MaterialImportsModule } from './material-imports/material-imports.modul
     MaterialImportsModule,
     FlexLayoutModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
