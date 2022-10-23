@@ -1,24 +1,28 @@
-:root {
-    --blue: rgb(29, 66, 138);
-    --red: rgb(200, 16, 46);
-    --white: rgb(255, 255, 255);
-}
-
-#contenedor {
-    width: 103%!important;
-    margin: -1% !important;
+button {
+    margin: 0 auto;
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    background-color: rgb(29, 66, 138);
+    color: white;
 }
 
 #player {
     width: 100%;
+    margin: 0 auto;
 }
 
 #img {
     margin: 0px;
 }
 
+#text {
+    text-align: justify;
+    font-weight: bold;
+}
+
 #filter {
-    filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.25));
+    filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 5));
 }
 
 div {
@@ -39,53 +43,62 @@ div:first-child {
     margin: 0 auto;
 }
 
-table {
+#stats {
     width: 100%;
-    font-size: 0.9em;
-    margin: 20px auto;
+    margin: 0%;
+    font-size: 0.75em;
+}
+
+table {
+    margin: 50px auto;
+    border-collapse: collapse;
+}
+
+td {
+    color: black;
 }
 
 td,
 th {
-    border-radius: 3px;
     padding: 10px;
 }
 
-td:hover {
-    background-color: rgb(200, 16, 46);
-    color: white;
-}
-
-th {
-    background-color: rgb(29, 66, 138);
-    font-weight: normal;
-    color: rgb(255, 255, 255);
-}
-
-#title {
-    background-color: rgb(200, 16, 46);
-    color: white;
-    font-weight: bold;
-}
-
-#tableTeams {
-    width: 100%;
-    font-size: 1em;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 3px;
-}
-
-#tableTeams th {
-    background-color: white;
-    color: black;
-    font-weight: bold;
-}
-
-#pg {
+#partido {
     width: 60%;
 }
 
-#fg {
+#tiro {
     width: 80%;
+}
+
+#partido table,
+#partido td,
+#tiro table,
+#tiro td,
+#totales table,
+#totales td {
+    border: 1px solid rgb(200, 200, 200);
+}
+
+#cabecera {
+    background-color: rgb(200, 200, 200);
+}
+
+.mainHeader {
+    background-color: black;
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.mainHeader img {
+    height: 80%;
+}
+
+.mainHeader a {
+    text-decoration: none;
+    color: white;
+    font-family: 'nba';
+    font-size: 2em;
+    border-bottom: solid white 3px;
 }
