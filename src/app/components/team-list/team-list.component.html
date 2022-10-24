@@ -1,5 +1,5 @@
 <div class="mainHeader" fxLayout="column" fxLayoutAlign="space-between center">
-  <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba">
+  <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba" [routerLink]="['/']">
   <div fxFlexAlign="end" fxLayout="row" fxLayoutAlign=" end" fxLayoutGap="20px" class="headerLinks">
     <a routerLink="/teams" class="mainLink">
       <p>Teams</p>
@@ -13,7 +13,7 @@
 </div>
 <mat-form-field >
   <mat-label>Año</mat-label>
-  <mat-select [(ngModel)]="year" (valueChange)="changeYear()">
+  <mat-select [(ngModel)]="year" (selectionChange)="changeYear()">
       <mat-option *ngFor="let yearSelect of yearList" [value]="yearSelect">
       {{yearSelect}}
     </mat-option>
