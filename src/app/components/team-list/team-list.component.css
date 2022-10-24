@@ -1,9 +1,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 mat-card img{
-    height: 500px;
+    height: 400px;
 }
 mat-card{
-    width: 500px;
+    width: 400px;
     margin-bottom: 15px;
     font-family: 'nba' !important;
 }
@@ -44,4 +44,5 @@ mat-card-header{
 }
 mat-form-field{
     margin-left: 5%;
+    margin-top: 2%;
 }
