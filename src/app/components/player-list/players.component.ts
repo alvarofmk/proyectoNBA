@@ -1,4 +1,6 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Player } from 'src/app/interfaces/players.interface';
 import { Team } from 'src/app/interfaces/teams.interface';
 import { PlayersService } from 'src/app/services/players.service';
@@ -11,12 +13,15 @@ import { TeamService } from 'src/app/services/team.service';
 })
 export class PlayersComponent implements OnInit {
 
+  teams = new FormControl('');
+  filteredTeamList: Team[] = [];
+  filteredPlayerList: Player[] = [];
   playerList: Player[] = [];
   teamList: Team[] = [];
-  yearList: number[] = []
+  yearList: number[] = [];
   year: number = 0;
-  teamURLbase1: string = 'https://cdn.nba.com/logos/nba/'
-  teamURLbase2: string = '/global/L/logo.svg'
+  teamURLbase1: string = 'https://cdn.nba.com/logos/nba/';
+  teamURLbase2: string = '/global/L/logo.svg';
 
   constructor(private playerService: PlayersService, private teamService: TeamService) { }
 
@@ -25,6 +30,7 @@ export class PlayersComponent implements OnInit {
 
     this.playerService.getPlayerList(this.year).subscribe(resp => {
       this.playerList = resp.league.standard;
+      this.filteredPlayerList = this.playerList
     })
 
     this.teamService.getTeams(this.year).subscribe(resp => {
@@ -37,7 +43,7 @@ export class PlayersComponent implements OnInit {
   }
 
   viewImg(id: string) {
-    return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`
+    return `https://cdn.nba.com/headshots/nba/latest/1040x760/${id}.png`
   }
 
   changeYear() {
@@ -51,6 +57,22 @@ export class PlayersComponent implements OnInit {
         return team.fullName;
       }
     }
-    return undefined
+    return undefined;
+  }
+
+  changeList() {
+    let listAux: Player[] = [];
+    for (let player of this.playerList) {
+      for (let team of this.filteredTeamList) {
+        if (player.teamId == team.teamId) {
+          listAux.push(player);
+        }
+      }
+    }
+    if (listAux.length == 0) {
+      this.filteredPlayerList = this.playerList
+    } else {
+      this.filteredPlayerList = listAux
+    }
   }
 }

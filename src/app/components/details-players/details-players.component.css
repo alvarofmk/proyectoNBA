@@ -1,3 +1,9 @@
+:root {
+    --blue: rgb(29, 66, 138);
+    --red: rgb(200, 16, 46);
+    --white: rgb(255, 255, 255);
+}
+
 div {
     margin-right: 15px;
 }
@@ -31,18 +37,12 @@ th {
 }
 
 td:hover {
-    background-color: rgb(200,16,46);
+    background-color: rgb(200, 16, 46);
     color: white;
 }
 
 th {
-    background-color: rgb(29,66,138);
+    background-color: rgb(29, 66, 138);
     font-weight: normal;
-    color: white;
+    color: rgb(255, 255, 255);
 }
-
-/*
-    AZUL: rgb(29,66,138)
-    ROJO: rgb(200,16,46)
-    BLANCO: rgb(255,255,255)
-*/
