@@ -52,7 +52,7 @@ export class DetailsPlayersComponent implements OnInit {
           this.player = player
         }
       }
-      if (this.player.teamId == '1610612737') {
+      /*if (this.player.teamId == '1610612737') {
         this.colorPpal = 'background-color: rgb(200, 16, 46);'
         this.colorSec = 'background-color: rgb(253, 185, 39);'
         this.colorLet = 'color: black'
@@ -169,6 +169,155 @@ export class DetailsPlayersComponent implements OnInit {
         this.colorPpal = 'background-color: rgb(0,43,92);'
         this.colorSec = 'background-color: rgb(227,24,55);'
         this.colorTexto = 'color: white'
+      }*/
+
+      switch (this.player.teamId) {
+        case '1610612737':
+          this.colorPpal = 'background-color: rgb(200, 16, 46);'
+          this.colorSec = 'background-color: rgb(253, 185, 39);'
+          this.colorLet = 'color: black'
+          break;
+        case '1610612738':
+          this.colorPpal = 'background-color: rgb(0, 122, 51);'
+          this.colorSec = 'background-color: rgb(139, 111, 78);'
+          this.colorLet = 'color: black'
+          break;
+        case '1610612751':
+          this.colorPpal = 'background-color: rgb(0, 0, 0);'
+          this.colorSec = 'background-color: rgb(255, 255, 255);'
+          this.colorTexto = 'color: white'
+          break;
+        case '1610612766':
+          this.colorPpal = 'background-color: rgb(29, 17, 96);'
+          this.colorSec = 'background-color: rgb(0, 120, 140);'
+          this.colorTexto = 'color: white'
+          break;
+        case '1610612741':
+          this.colorPpal = 'background-color: rgb(206, 17, 65);'
+          this.colorSec = 'background-color: rgb(6, 25, 34);'
+          this.colorLet = 'color: white'
+          break;
+        case '1610612739':
+          this.colorPpal = 'background-color: rgb(134, 0, 56);'
+          this.colorSec = 'background-color: rgb(4, 30, 66);'
+          this.colorLet = 'color: white'
+          this.colorTexto = 'color: black'
+          break;
+        case '1610612742':
+          this.colorPpal = 'background-color: rgb(0, 83, 188);'
+          this.colorSec = 'background-color: rgb(0, 43, 92);'
+          this.colorLet = 'color: white'
+          this.colorTexto = 'color: black'
+          break;
+        case '1610612743':
+          this.colorPpal = 'background-color: rgb(13, 34, 64);'
+          this.colorSec = 'background-color: rgb(255, 198, 39);'
+          this.colorTexto = 'color: white'
+          break;
+        case '1610612765':
+          this.colorPpal = 'background-color: rgb(200,16,46);'
+          this.colorSec = 'background-color: rgb(29,66,138);'
+          break;
+        case '1610612744':
+          this.colorPpal = 'background-color: rgb(29, 66, 138);'
+          this.colorSec = 'background-color: rgb(255, 199, 44);'
+          break;
+        case '1610612745':
+          this.colorPpal = 'background-color: rgb(206,17,65);'
+          this.colorSec = 'background-color: rgb(6,25,34);'
+          this.colorLet = 'color: white'
+          this.colorTexto = 'color: black'
+          break;
+        case '1610612754':
+          this.colorPpal = 'background-color: rgb(0, 45, 98);'
+          this.colorSec = 'background-color: rgb(253, 187, 48);'
+          this.colorTexto = 'color: white'
+          break;
+        case '1610612746':
+          this.colorPpal = 'background-color: rgb(200,16,46);'
+          this.colorSec = 'background-color: rgb(29,66,148);'
+          break;
+        case '1610612747':
+          this.colorPpal = 'background-color: rgb(85, 37, 130);'
+          this.colorSec = 'background-color: rgb(253, 185, 39);'
+          break;
+        case '1610612763':
+          this.colorPpal = 'background-color: rgb(93, 118, 169);'
+          this.colorSec = 'background-color: rgb(18, 23, 63);'
+          this.colorLet = 'color: white'
+          this.colorTexto = 'color: black'
+          break;
+        case '1610612748':
+          this.colorPpal = 'background-color: rgb(152, 0, 46);'
+          this.colorSec = 'background-color: rgb(249, 160, 27);'
+          break;
+        case '1610612749':
+          this.colorPpal = 'background-color: rgb(0, 71, 27);'
+          this.colorSec = 'background-color: rgb(240, 235, 210);'
+          break;
+        case '1610612750':
+          this.colorPpal = 'background-color: rgb(12, 35, 64);'
+          this.colorSec = 'background-color: rgb(35, 97, 146);'
+          this.colorTexto = 'color: white'
+          break;
+        case '1610612740':
+          this.colorPpal = 'background-color: rgb(0, 22, 65);'
+          this.colorSec = 'background-color: rgb(225, 58, 62);'
+          this.colorTexto = 'color: white'
+          break;
+        case '1610612752':
+          this.colorPpal = 'background-color: rgb(0, 107, 182);'
+          this.colorSec = 'background-color: rgb(245, 132, 38);'
+          break;
+        case '1610612760':
+          this.colorPpal = 'background-color: rgb(0, 125, 195);'
+          this.colorSec = 'background-color: rgb(239, 59, 36);'
+          break;
+        case '1610612753':
+          this.colorPpal = 'background-color: rgb(0, 125, 197);'
+          this.colorSec = 'background-color: rgb(196, 206, 211);'
+          break;
+        case '1610612755':
+          this.colorPpal = 'background-color: rgb(0, 107, 182);'
+          this.colorSec = 'background-color: rgb(237, 23, 76);'
+          break;
+        case '1610612756':
+          this.colorPpal = 'background-color: rgb(29, 17, 96);'
+          this.colorSec = 'background-color: rgb(229, 95, 32);'
+          this.colorTexto = 'color: white'
+          break;
+        case '1610612757':
+          this.colorPpal = 'background-color: rgb(224, 58, 62);'
+          this.colorSec = 'background-color: rgb(6, 25, 34);'
+          this.colorLet = 'color: white'
+          this.colorTexto = 'color: black'
+          break;
+        case '1610612758':
+          this.colorPpal = 'background-color: rgb(91,43,130);'
+          this.colorSec = 'background-color: rgb(99,113,122);'
+          break;
+        case '1610612759':
+          this.colorPpal = 'background-color: rgb(196, 206, 211);'
+          this.colorSec = 'background-color: rgb(6, 25, 34);'
+          this.colorLet = 'color: white'
+          this.colorTexto = 'color: black'
+          break;
+        case '1610612761':
+          this.colorPpal = 'background-color: rgb(206, 17, 65);'
+          this.colorSec = 'background-color: rgb(6, 25, 34);'
+          this.colorLet = 'color: white'
+          this.colorTexto = 'color: black'
+          break;
+        case '1610612762':
+          this.colorPpal = 'background-color: rgb(0, 43, 92);'
+          this.colorSec = 'background-color: rgb(0, 71, 27);'
+          this.colorLet = 'color: white'
+          this.colorTexto = 'color: black'
+          break;
+        case '1610612764':
+          this.colorPpal = 'background-color: rgb(0,43,92);'
+          this.colorSec = 'background-color: rgb(227,24,55);'
+          this.colorTexto = 'color: white'
       }
     });
 

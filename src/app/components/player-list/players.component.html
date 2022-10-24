@@ -1,13 +1,14 @@
 <div class="mainHeader" fxLayout="column" fxLayoutAlign="space-between center">
-    <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba" [routerLink]="['/']">
+    <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba"
+        [routerLink]="['/']">
     <div fxFlexAlign="end" fxLayout="row" fxLayoutAlign=" end" fxLayoutGap="20px" class="headerLinks">
         <a routerLink="/teams" class="mainLink">
             <p>Teams</p>
             <div class="whiteButton"></div>
         </a>
-            <a routerLink="/players" class="mainLink">
+        <a routerLink="/players" class="mainLink">
             <p>Players</p>
-        <div class="whiteButton"></div>
+            <div class="whiteButton"></div>
         </a>
     </div>
 </div>
@@ -31,8 +32,7 @@
 
 <div id="contenedor" fxLayout="row wrap" fxLayoutAlign="space-around center">
     <div *ngFor="let player of filteredPlayerList" style="width: 275px;">
-        <mat-card class="example-card" [routerLink]="['/details-player', player.personId, year]"
-            [style]="background(player.teamId) + color(player.teamId)">
+        <mat-card class="example-card" [routerLink]="['/details-player', player.personId, year]">
             <img mat-card-image [src]="viewImg(player.personId)" style="width: 250px;" alt="Player photo"
                 onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
 
