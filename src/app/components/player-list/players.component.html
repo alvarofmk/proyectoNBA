@@ -1,3 +1,11 @@
+<div class="mainHeader" fxLayout="column" fxLayoutAlign=" center">
+    <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba">
+    <div fxLayout="row" fxLayoutGap="20px">
+        <a routerLink="/teams">Teams</a>
+        <a routerLink="/players">Players</a>
+    </div>
+</div>
+
 <mat-form-field>
     <mat-label>Año</mat-label>
     <mat-select [(ngModel)]="year" (valueChange)="changeYear()">
@@ -18,13 +26,14 @@
 
 <div id="contenedor" fxLayout="row wrap" fxLayoutAlign="space-around center">
     <div *ngFor="let player of filteredPlayerList" style="width: 275px;">
-        <mat-card class="example-card" [routerLink]="['/details-player', player.personId, year]">
+        <mat-card class="example-card" [routerLink]="['/details-player', player.personId, year]"
+            [style]="background(player.teamId) + color(player.teamId)">
             <img mat-card-image [src]="viewImg(player.personId)" style="width: 250px;" alt="Player photo"
                 onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
 
-            <mat-card-content>
+            <mat-card-content style="margin-top: 10px;">
                 <h2>{{player.firstName}} {{player.lastName}}</h2>
-                <img mat-card-image [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 50px;"
+                <img mat-card-image id="filter" [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 70px;"
                     alt="Team logo">
                 <h3>{{showTeam(player.teamId)}}</h3>
             </mat-card-content>
