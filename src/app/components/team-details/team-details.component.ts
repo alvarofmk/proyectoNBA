@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Player } from 'src/app/interfaces/players.interface';
 import { Team } from 'src/app/interfaces/teams.interface';
 import { TeamService } from 'src/app/services/team.service';
@@ -24,14 +24,21 @@ export class TeamDetailsComponent implements OnInit {
   colorSec: string = '';
   colorLet: string = '';
   colorTexto: string = '';
+  yearList : number[] = [];
+  currentYear: number = new Date().getFullYear();
 
-  constructor(private teamService: TeamService, private playerService: PlayersService, private route: ActivatedRoute) { }
+  constructor(private teamService: TeamService, private router: Router, private playerService: PlayersService, private route: ActivatedRoute) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   ngOnInit(): void {
     let teamUrlName: string = '';
     this.route.params.subscribe((parametros => {
       teamUrlName = parametros['teamName'];
-      this.year = parametros['year']}))
+      this.year = parametros['year']
+      for (let i = 0; i < 8; i++) {
+        this.yearList.push(this.currentYear-i);
+      }}))
     this.teamService.getTeams(this.year).subscribe(response => {
       this.teamWwrapper = response.league.standard.find(team => team.urlName == teamUrlName);
       if(this.teamWwrapper !== undefined){
@@ -52,7 +59,6 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   getWinner(match: Standard){
-    debugger;
     let result = 0;
     if(Number(match.hTeam.score) > Number(match.vTeam.score)){
       result = 1;
@@ -211,6 +217,11 @@ export class TeamDetailsComponent implements OnInit {
           this.colorSec = 'filter: drop-shadow(0px 10px 0px rgb(227,24,55));'
           this.colorTexto = 'color: white'
     }
+  }
+
+  changeYear(){
+    debugger;
+    this.router.navigate(['teams/' + this.year + '/' + this.teamDetails.urlName])
   }
 
 }
