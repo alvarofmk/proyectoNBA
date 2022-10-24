@@ -1,5 +1,6 @@
 .teamHeader img{
     height: 500px;
+    filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.25));
 }
 .playerList img{
     height: 50px;
@@ -9,4 +10,55 @@
 }
 h1, h2, h3, h4, h5{
     font-family: 'nba';
+}
+h3{
+    font-size: 3em;
+}
+.playeritem{
+    font-family: 'nba';
+    background-color: rgb(200,16,46);
+    border-radius: 8px;
+    color: white;
+    font-size: 2.8em;
+    margin-top: 10px;
+}
+.playeritem:first-of-type{
+    margin-top: 40px;
+}
+.playerList img{
+    height: 100px;
+    margin-top: -40px;
+}
+.playeritem p{
+    margin-top: 2.1%;
+    margin-left: 10px;
+}
+.matchitem{
+    margin-top: 20px;
+}
+.matchitem:first-of-type{
+    margin-top: 40px;
+}
+.matchitem p{
+    margin: 0px;
+}
+.score{
+    font-family: 'nba';
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.teamHeader{
+    background-color: black;
+    height: 400px;
+    margin-bottom: 120px;
+    color: white;
+    filter: drop-shadow(0px 10px 0px rgb(29,66,138));
+}
+.teamHeader div * {
+    text-align: center;
+    font-size: 12em;
+    padding-top: 12%;
+}
+.winner{
+    color: green;
 }

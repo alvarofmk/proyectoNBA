@@ -4,7 +4,7 @@ import { Player } from 'src/app/interfaces/players.interface';
 import { Team } from 'src/app/interfaces/teams.interface';
 import { TeamService } from 'src/app/services/team.service';
 import { PlayersService } from 'src/app/services/players.service';
-import { ScheduleResponse } from 'src/app/interfaces/schedule.interface';
+import { ScheduleResponse, Standard } from 'src/app/interfaces/schedule.interface';
 
 @Component({
   selector: 'app-team-details',
@@ -44,6 +44,17 @@ export class TeamDetailsComponent implements OnInit {
 
   viewImg(id: string) {
     return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`
+  }
+
+  getWinner(match: Standard){
+    debugger;
+    let result = 0;
+    if(Number(match.hTeam.score) > Number(match.vTeam.score)){
+      result = 1;
+    }else if(Number(match.vTeam.score) > Number(match.hTeam.score)){
+      result = 2;
+    }
+    return result;
   }
 
 }
