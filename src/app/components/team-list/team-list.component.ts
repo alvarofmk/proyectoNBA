@@ -19,14 +19,20 @@ export class TeamListComponent implements OnInit {
 
   ngOnInit(): void {
     this.year = new Date().getFullYear();
-    this.teamService.getTeams(this.year).subscribe(response => this.teamList = response.league.standard)
+    this.yearList.push(this.year);
+    this.teamService.getTeams(this.year).subscribe(response => {
+      this.teamList = response.league.standard
+      this.teamList = this.teamList.filter(team => team.isNBAFranchise)
+    })
     for (let i = 1; i < 5; i++) {
       this.yearList.push(this.year-i);
     }
   }
 
   changeYear(){
-    this.teamService.getTeams(this.year).subscribe(response => this.teamList = response.league.standard)
+    this.teamService.getTeams(this.year).subscribe(response => {
+      this.teamList = response.league.standard
+      this.teamList = this.teamList.filter(team => team.isNBAFranchise)})
   }
 
 }

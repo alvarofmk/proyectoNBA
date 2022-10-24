@@ -1,27 +1,45 @@
-<div fxLayout="row" class="teamHeader">
-    <img [src]="teamURLbase1 + teamDetails.teamId + teamURLbase2" alt="Logo">
+<div>
     <div>
-        <h1>{{teamDetails.fullName}}</h1>
-        <h2>{{teamDetails.city}}</h2>
+        <button mat-raised-button routerLink="/">VOLVER</button>
     </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-around start">
-    <div class="matchList" fxFlex="20">
-        <h3>Matches</h3>
-        <div *ngFor="let match of teamSchedule.league.standard" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
-            <p>{{match.startTimeUTC | date:'LLL d Y'}}</p>
-            <img [src]="teamURLbase1 + match.hTeam.teamId + teamURLbase2" alt="Logo local">
-            <p>{{match.hTeam.score}}</p>
-            <p>vs</p>
-            <p>{{match.vTeam.score}}</p>
-            <img [src]="teamURLbase1 + match.vTeam.teamId + teamURLbase2" alt="Logo visitante">
+
+    <div class="mainHeader" fxLayout="column" fxLayoutAlign="space-between center">
+        <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba" [routerLink]="['/']">
+        <div fxFlexAlign="end" fxLayout="row" fxLayoutAlign=" end" fxLayoutGap="20px" class="headerLinks">
+            <a routerLink="/teams" class="mainLink">
+                <p>Teams</p>
+                <div class="whiteButton" [style]="colorPpal"></div>
+            </a>
+            <a routerLink="/players" class="mainLink">
+                <p>Players</p>
+                <div class="whiteButton" [style]="colorPpal"></div>
+            </a>
         </div>
     </div>
-    <div class="playerList" fxLayout="column" fxLayoutGap="10px" fxFlex="50">
-        <h3>Players</h3>
-        <div *ngFor="let player of teamRoster" class="mat-elevation-z4" fxLayout="row">
-            <img [src]="viewImg(player.personId)" alt="Jugador">
-            <p>{{player.firstName}} {{player.lastName}}</p>
+    <div fxLayout="row" fxLayoutAlign="end" class="teamHeader" [style]="colorPpal + colorSec">
+        <img [src]="teamURLbase1 + teamDetails.teamId + teamURLbase2" alt="Logo" fxFlex>
+        <div fxFlex="80">
+            <h1>{{teamDetails.fullName}}</h1>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around start">
+        <div class="matchList" fxFlex="20">
+            <h3>Matches</h3>
+            <div *ngFor="let match of teamSchedule.league.standard" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center" class="matchitem">
+                <p class="matchdate">{{match.startTimeUTC | date:'LLL d Y'}}</p>
+                <img [src]="teamURLbase1 + match.hTeam.teamId + teamURLbase2" alt="Logo local">
+                <p class="score" [ngClass]="{winner: getWinner(match)==1}">{{match.hTeam.score}}</p>
+                <p class="vs">-</p>
+                <p class="score" [ngClass]="{winner: getWinner(match)==2}">{{match.vTeam.score}}</p>
+                <img [src]="teamURLbase1 + match.vTeam.teamId + teamURLbase2" alt="Logo visitante">
+            </div>
+        </div>
+        <div class="playerList" fxLayout="column" fxLayoutGap="10px" fxFlex="50">
+            <h3>Players</h3>
+            <div *ngFor="let player of teamRoster" class="mat-elevation-z4 playeritem" fxLayout="row" fxLayoutGap="10px" [style]="colorPpal">
+                <img [src]="viewImg(player.personId)" alt="Jugador">
+                <p>{{player.firstName}} {{player.lastName}}</p>
+            </div>
         </div>
     </div>
 </div>

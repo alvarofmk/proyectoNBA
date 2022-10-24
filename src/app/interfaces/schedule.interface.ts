@@ -97,7 +97,7 @@ export interface VTeam2 {
 }
 export interface VTeam3 {
     teamId: string;
-    score: string;
+    score: number;
 }
 export interface VTeam4 {
     seedNum: string;
@@ -115,7 +115,7 @@ export interface HTeam2 {
 }
 export interface HTeam3 {
     teamId: string;
-    score: string;
+    score: number;
 }
 export interface HTeam4 {
     seedNum: string;
