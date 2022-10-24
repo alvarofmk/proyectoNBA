@@ -1,0 +1,22 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
+    <div>
+        <h1>ngx-charts-bar-vertical</h1>
+        <ngx-charts-bar-vertical [view]="[800,200]" [results]="compare()" [xAxisLabel]="'Puntos'"
+            [yAxisLabel]="'Jugador'" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+            [yAxis]="true" [animations]="false">
+        </ngx-charts-bar-vertical>
+    </div>
+
+    <div>
+        <h1>ngx-charts-bar-horizontal</h1>
+        <ngx-charts-bar-horizontal [view]="[800,200]" [results]="compare()" [xAxisLabel]="'Puntos'"
+            [yAxisLabel]="'Jugador'" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+            [yAxis]="true" [animations]="false">
+        </ngx-charts-bar-horizontal>
+    </div>
+
+    <div>
+        <h1>ngx-charts-pie-chart</h1>
+        <ngx-charts-pie-chart [view]="[800,500]" [results]="compare2()" [legend]="true" ></ngx-charts-pie-chart>
+    </div>
+</div>
