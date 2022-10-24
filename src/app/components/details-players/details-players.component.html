@@ -1,15 +1,23 @@
 <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
-    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
-        <div>
-            <img mat-card-image [src]="viewImg(player.personId)" style="width: 500px;" alt="Player photo"
+    <div class="mainHeader" fxLayout="column" fxLayoutAlign="center">
+        <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png"
+            alt="Logo nba">
+        <div fxLayout="row" fxLayoutGap="20px">
+            <a routerLink="/teams">Teams</a>
+            <a routerLink="/players">Players</a>
+        </div>
+    </div>
+
+    <div id="player" fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100" [style]="colorPpal + colorLet">
+        <div id="img">
+            <img mat-card-image id="filter" [src]="viewImg(player.personId)" style="width: 500px;" alt="Player photo"
                 onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
-            <h2>{{player.firstName}} {{player.lastName}}</h2>
+            <h1 [style]="colorTexto">{{player.firstName}} {{player.lastName}}</h1>
         </div>
 
-        <div>
-            <img mat-card-image [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 150px;"
+        <div id="text" [style]="colorTexto">
+            <img mat-card-image id="filter" [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 150px;"
                 alt="Team logo">
-            <!--<p>NOMBRE EQUIPO</p>-->
             <p>Nombre: {{player.temporaryDisplayName}}.</p>
             <p>Fecha de nacimiento: {{player.dateOfBirthUTC}}.</p>
             <p>Altura: {{player.heightMeters}} metros.</p>
@@ -17,7 +25,7 @@
             <p>País de origen: {{player.country}}.</p>
         </div>
 
-        <div>
+        <div id="text" [style]="colorTexto">
             <p>Equipo universitario: {{player.collegeName}}.</p>
             <p>Equipo drafteado: {{teamDrafted(player.draft)}}.</p>
             <p>Año de debut: {{player.nbaDebutYear}}.</p>
@@ -28,70 +36,40 @@
         </div>
 
         <div>
-            <table>
+            <table id="tableTeams" [style]="colorSec + colorLet">
                 <tr>
                     <th colspan="2">ANTIGUOS EQUIPOS</th>
                 </tr>
                 <tr *ngFor="let team of teamsPlayed(player.teams)">
-                    <td><img mat-card-image [src]="teamURLbase1 + checkTeamId(team) + teamURLbase2" style="width: 60px;"
-                        alt="Team logo"></td>
-                    <td>{{team}}</td>
+                    <th id="esc"><img id="filter" mat-card-image [src]="teamURLbase1 + checkTeamId(team) + teamURLbase2"
+                            style="width: 70px;" alt="Team logo"></th>
+                    <td [style]="colorLet">{{team}}</td>
                 </tr>
             </table>
         </div>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
-        <div id="stats">
-            <table>
-                <tr>
-                    <th>ESTADÍSTICAS TEMPORADA {{year}}</th>
-                </tr>
-            </table>
+    <div id="stats" [style]="colorSec + colorLet">
 
-            <table>
-                <tr>
-                    <th colspan="14">TOTALES</th>
-                </tr>
-                <tr>
-                    <th>Partidos jugados</th>
-                    <th>Minutos</th>
-                    <th>Partidos titular</th>
-                    <th>Puntos</th>
-                    <th>Asistencias</th>
-                    <th>Bloqueos</th>
-                    <th>Robos</th>
-                    <th>Pérdidas de balón</th>
-                    <th>Rebotes ofensivos</th>
-                    <th>Rebotes defensivos</th>
-                    <th>Rebotes totales</th>
-                    <th>Faltas personales cometidas</th>
-                    <th>Dobles-dobles</th>
-                    <th>Triples-dobles</th>
-                </tr>
-                <tr>
-                    <td>{{summary.gamesPlayed}}</td>
-                    <td>{{summary.min}}</td>
-                    <td>{{summary.gamesStarted}}</td>
-                    <td>{{summary.points}}</td>
-                    <td>{{summary.assists}}</td>
-                    <td>{{summary.blocks}}</td>
-                    <td>{{summary.steals}}</td>
-                    <td>{{summary.turnovers}}</td>
-                    <td>{{summary.offReb}}</td>
-                    <td>{{summary.defReb}}</td>
-                    <td>{{summary.totReb}}</td>
-                    <td>{{summary.pFouls}}</td>
-                    <td>{{summary.dd2}}</td>
-                    <td>{{summary.td3}}</td>
-                </tr>
-            </table>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex="100">
+            <button mat-raised-button [style]="colorPpal + colorLet" (click)="showStats1()">HASTA {{year}}</button>
+            <h2>ESTADÍSTICAS</h2>
+            <button mat-raised-button [style]="colorPpal + colorLet" (click)="showStats2()">POR TEMPORADA</button>
+        </div>
+    </div>
 
-            <table>
-                <tr>
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" *ngIf="stats1" style="width: 100%;">
+        <div id="stats" [style]="colorSec + colorLet" style="margin-top: 30px; width: 75%;">
+            <h2>ESTADÍSTICAS GENERALES HASTA {{year}}</h2>
+        </div>
+
+        <div>
+            <table id="partido">
+                <tr [style]="colorSec + colorLet" style="color: black;">
                     <th colspan="6">POR PARTIDO</th>
                 </tr>
-                <tr>
+
+                <tr id="cabecera">
                     <th>Puntos</th>
                     <th>Rebotes</th>
                     <th>Asistencias</th>
@@ -109,33 +87,213 @@
                 </tr>
             </table>
 
-            <table>
-                <tr>
-                    <th colspan="11">DE TIRO</th>
+            <table id="tiro">
+                <tr [style]="colorSec + colorLet" style="color: black;">
+                    <th colspan="3">DE TIRO</th>
+                </tr>
+
+                <tr id="cabecera">
+                    <th>Tiros de campo lanzados</th>
+                    <th>Tiros de tres lanzados</th>
+                    <th>Tiros libres lanzados</th>
                 </tr>
                 <tr>
-                    <th>Tiros de campo lanzados</th>
                     <td>{{summary.fga}}</td>
-                    <th>Tiros de tres lanzados</th>
                     <td>{{summary.tpa}}</td>
-                    <th>Tiros libres lanzados</th>
                     <td>{{summary.fta}}</td>
                 </tr>
-                <tr>
+
+                <tr id="cabecera">
                     <th>Tiros de campo encestados</th>
-                    <td>{{summary.fgm}}</td>
                     <th>Tiros de tres encestados</th>
-                    <td>{{summary.tpm}}</td>
                     <th>Tiros libres encestados</th>
-                    <td>{{summary.ftm}}</td>
                 </tr>
                 <tr>
+                    <td>{{summary.fgm}}</td>
+                    <td>{{summary.tpm}}</td>
+                    <td>{{summary.ftm}}</td>
+                </tr>
+
+                <tr id="cabecera">
                     <th>% Tiros de campo</th>
-                    <td>{{summary.fgp}}</td>
                     <th>% Tiros de tres</th>
-                    <td>{{summary.tpp}}</td>
                     <th>% Tiros libres</th>
+                </tr>
+                <tr>
+                    <td>{{summary.fgp}}</td>
+                    <td>{{summary.tpp}}</td>
                     <td>{{summary.ftp}}</td>
+                </tr>
+            </table>
+
+            <table id="totales">
+                <tr [style]="colorSec + colorLet" style="color: black;">
+                    <th colspan="11">TOTALES</th>
+                </tr>
+
+                <tr id="cabecera">
+                    <th>Partidos jugados</th>
+                    <th>Minutos</th>
+                    <th>Partidos titular</th>
+                    <th>Puntos</th>
+                    <th>Asistencias</th>
+                    <th>Bloqueos</th>
+                    <th>Robos</th>
+                </tr>
+                <tr>
+                    <td>{{summary.gamesPlayed}}</td>
+                    <td>{{summary.min}}</td>
+                    <td>{{summary.gamesStarted}}</td>
+                    <td>{{summary.points}}</td>
+                    <td>{{summary.assists}}</td>
+                    <td>{{summary.blocks}}</td>
+                    <td>{{summary.steals}}</td>
+                </tr>
+                <tr id="cabecera">
+                    <th>Pérdidas de balón</th>
+                    <th>Rebotes ofensivos</th>
+                    <th>Rebotes defensivos</th>
+                    <th>Rebotes totales</th>
+                    <th>Faltas personales cometidas</th>
+                    <th>Dobles-dobles</th>
+                    <th>Triples-dobles</th>
+                </tr>
+                <tr>
+                    <td>{{summary.turnovers}}</td>
+                    <td>{{summary.offReb}}</td>
+                    <td>{{summary.defReb}}</td>
+                    <td>{{summary.totReb}}</td>
+                    <td>{{summary.pFouls}}</td>
+                    <td>{{summary.dd2}}</td>
+                    <td>{{summary.td3}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" *ngIf="stats2" style="margin-top: 10px; width: 100%;">
+        <mat-form-field>
+            <mat-label>Año</mat-label>
+            <mat-select [(ngModel)]="yearStats" (selectionChange)="selectYear()">
+                <mat-option *ngFor="let yearSelect of yearList" [value]="yearSelect">
+                    {{yearSelect}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div *ngFor="let season of statsPerYear" style="margin-top: 30px; width: 75%;">
+            <div [style]="colorSec + colorLet">
+                <div id="stats" *ngFor="let team of season.teams" fxLayout="row" fxLayoutAlign="space-around center"
+                    fxFlex="100">
+                    <h2>{{season.seasonYear}}</h2>
+                    <h2>{{showTeam(team.teamId)}}</h2>
+                    <div id="esc"><img id="filter" mat-card-image [src]="teamURLbase1 + team.teamId + teamURLbase2"
+                            style="width: 65px;" alt="Team logo"></div>
+                </div>
+            </div>
+
+            <table id="partido">
+                <tr [style]="colorSec + colorLet" style="color: black;">
+                    <th colspan="6">POR PARTIDO</th>
+                </tr>
+
+                <tr id="cabecera">
+                    <th>Puntos</th>
+                    <th>Rebotes</th>
+                    <th>Asistencias</th>
+                    <th>Bloqueos</th>
+                    <th>Minutos</th>
+                    <th>Robos</th>
+                </tr>
+                <tr>
+                    <td>{{season.total.ppg}}</td>
+                    <td>{{season.total.rpg}}</td>
+                    <td>{{season.total.apg}}</td>
+                    <td>{{season.total.bpg}}</td>
+                    <td>{{season.total.mpg}}</td>
+                    <td>{{season.total.spg}}</td>
+                </tr>
+            </table>
+
+            <table id="tiro">
+                <tr [style]="colorSec + colorLet" style="color: black;">
+                    <th colspan="3">DE TIRO</th>
+                </tr>
+
+                <tr id="cabecera">
+                    <th>Tiros de campo lanzados</th>
+                    <th>Tiros de tres lanzados</th>
+                    <th>Tiros libres lanzados</th>
+                </tr>
+                <tr>
+                    <td>{{season.total.fga}}</td>
+                    <td>{{season.total.tpa}}</td>
+                    <td>{{season.total.fta}}</td>
+                </tr>
+
+                <tr id="cabecera">
+                    <th>Tiros de campo encestados</th>
+                    <th>Tiros de tres encestados</th>
+                    <th>Tiros libres encestados</th>
+                </tr>
+                <tr>
+                    <td>{{season.total.fgm}}</td>
+                    <td>{{season.total.tpm}}</td>
+                    <td>{{season.total.ftm}}</td>
+                </tr>
+
+                <tr id="cabecera">
+                    <th>% Tiros de campo</th>
+                    <th>% Tiros de tres</th>
+                    <th>% Tiros libres</th>
+                </tr>
+                <tr>
+                    <td>{{season.total.fgp}}</td>
+                    <td>{{season.total.tpp}}</td>
+                    <td>{{season.total.ftp}}</td>
+                </tr>
+            </table>
+
+            <table id="totales">
+                <tr [style]="colorSec + colorLet" style="color: black;">
+                    <th colspan="11">TOTALES</th>
+                </tr>
+
+                <tr id="cabecera">
+                    <th>Partidos jugados</th>
+                    <th>Minutos</th>
+                    <th>Partidos titular</th>
+                    <th>Puntos</th>
+                    <th>Asistencias</th>
+                    <th>Bloqueos</th>
+                    <th>Robos</th>
+                </tr>
+                <tr>
+                    <td>{{season.total.gamesPlayed}}</td>
+                    <td>{{season.total.min}}</td>
+                    <td>{{season.total.gamesStarted}}</td>
+                    <td>{{season.total.points}}</td>
+                    <td>{{season.total.assists}}</td>
+                    <td>{{season.total.blocks}}</td>
+                    <td>{{season.total.steals}}</td>
+                </tr>
+                <tr id="cabecera">
+                    <th>Pérdidas de balón</th>
+                    <th>Rebotes ofensivos</th>
+                    <th>Rebotes defensivos</th>
+                    <th>Rebotes totales</th>
+                    <th>Faltas personales cometidas</th>
+                    <th>Dobles-dobles</th>
+                    <th>Triples-dobles</th>
+                </tr>
+                <tr>
+                    <td>{{season.total.turnovers}}</td>
+                    <td>{{season.total.offReb}}</td>
+                    <td>{{season.total.defReb}}</td>
+                    <td>{{season.total.totReb}}</td>
+                    <td>{{season.total.pFouls}}</td>
+                    <td>{{season.total.dd2}}</td>
+                    <td>{{season.total.td3}}</td>
                 </tr>
             </table>
         </div>
