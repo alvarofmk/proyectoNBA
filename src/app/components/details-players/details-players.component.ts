@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CareerSummary } from 'src/app/interfaces/player-stats.interface';
+import { ActivatedRoute } from '@angular/router';
+import { CareerSummary, Season } from 'src/app/interfaces/player-stats.interface';
 import { Draft, Player, TeamPlayed } from 'src/app/interfaces/players.interface';
 import { Team } from 'src/app/interfaces/teams.interface';
 import { PlayersService } from 'src/app/services/players.service';
@@ -18,24 +18,33 @@ export class DetailsPlayersComponent implements OnInit {
   colorSec: string = '';
   colorLet: string = '';
   colorTexto: string = '';
-  player: Player = {} as Player
-  summary: CareerSummary = {} as CareerSummary
+  player: Player = {} as Player;
+  summary: CareerSummary = {} as CareerSummary;
+  seasons: Season[] = [];
+  statsPerYear: Season[] = [];
   playerList: Player[] = [];
   teamList: Team[] = [];
   teamPlayed: string[] = [];
   teamDraft: string = '';
   yearList: number[] = [];
   year: number = 0;
-  teamURLbase1: string = 'https://cdn.nba.com/logos/nba/'
-  teamURLbase2: string = '/global/L/logo.svg'
+  yearStats: number = 0;
+  teamURLbase1: string = 'https://cdn.nba.com/logos/nba/';
+  teamURLbase2: string = '/global/L/logo.svg';
+  stats1 = false;
+  stats2 = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private playerService: PlayersService, private teamService: TeamService) { }
+  constructor(private route: ActivatedRoute, private playerService: PlayersService, private teamService: TeamService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(resp => {
       this.id = resp['id']
       this.year = resp['year']
     });
+
+    for (let i = 1; i < 13; i++) {
+      this.yearList.push(this.year - i);
+    }
 
     this.playerService.getPlayerList(this.year).subscribe(resp => {
       for (let player of resp.league.standard) {
@@ -167,6 +176,10 @@ export class DetailsPlayersComponent implements OnInit {
       this.summary = resp.league.standard.stats.careerSummary
     });
 
+    this.playerService.getStats(this.year, this.id).subscribe(resp => {
+      this.seasons = resp.league.standard.stats.regularSeason.season
+    })
+
     this.teamService.getTeams(this.year).subscribe(resp => {
       this.teamList = resp.league.standard;
     });
@@ -232,7 +245,23 @@ export class DetailsPlayersComponent implements OnInit {
     return this.teamDraft
   }
 
-  volver(): void {
-    this.router.navigate(['/players'])
+  showStats1() {
+    this.stats1 = true;
+    this.stats2 = false;
+  }
+
+  showStats2() {
+    this.stats1 = false;
+    this.stats2 = true;
+    this.statsPerYear = this.seasons;
+  }
+
+  selectYear() {
+    this.statsPerYear = [];
+    for (let season of this.seasons) {
+      if (season.seasonYear == this.yearStats) {
+        this.statsPerYear.push(season);
+      }
+    }
   }
 }

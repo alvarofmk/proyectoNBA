@@ -13,7 +13,7 @@
 </div>
 <mat-form-field>
     <mat-label>Año</mat-label>
-    <mat-select [(ngModel)]="year" (valueChange)="changeYear()">
+    <mat-select [(ngModel)]="year" (selectionChange)="changeYear()">
         <mat-option *ngFor="let yearSelect of yearList" [value]="yearSelect">
             {{yearSelect}}
         </mat-option>

@@ -1,10 +1,6 @@
 button {
-    margin: 0 auto;
-    position: fixed;
-    bottom: 30px;
-    right: 40px;
-    background-color: rgb(29, 66, 138);
-    color: white;
+    font-size: 1.3em;
+    width: 10%;
 }
 
 #player {
@@ -41,12 +37,12 @@ div:first-child {
 
 #stats {
     width: 100%;
-    margin: 0%;
+    margin: 0px auto;
     font-size: 0.75em;
 }
 
 table {
-    margin: 50px auto;
+    margin: 30px auto;
     border-collapse: collapse;
 }
 
