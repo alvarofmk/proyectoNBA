@@ -13,18 +13,17 @@ export class TeamListComponent implements OnInit {
   teamURLbase2: string = '/global/L/logo.svg'
   teamList: Team[] = [];
   year: number = 0;
-  yearList : number[] = []
+  yearList : number[] = [];
 
   constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
     this.year = new Date().getFullYear();
-    this.yearList.push(this.year);
     this.teamService.getTeams(this.year).subscribe(response => {
       this.teamList = response.league.standard
       this.teamList = this.teamList.filter(team => team.isNBAFranchise)
     })
-    for (let i = 1; i < 5; i++) {
+    for (let i = 0; i < 8; i++) {
       this.yearList.push(this.year-i);
     }
   }
