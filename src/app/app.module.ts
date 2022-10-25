@@ -13,10 +13,13 @@ import { DetailsPlayersComponent } from './components/details-players/details-pl
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { MaterialImportsModule } from './material-imports/material-imports.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { CompareStatsComponent } from './components/compare-stats/compare-stats.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    CompareStatsComponent,
     TeamListComponent,
     PlayersComponent,
     DetailsPlayersComponent,
@@ -25,12 +28,11 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MaterialImportsModule,
     FlexLayoutModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgxChartsModule
