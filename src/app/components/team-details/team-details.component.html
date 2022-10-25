@@ -30,6 +30,14 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
+    <ngx-charts-bar-vertical
+        [gradient]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="true"
+        [view]="[500,200]"
+        [results]="datos">
+    </ngx-charts-bar-vertical>
     <div fxLayout="row" fxLayoutAlign="space-around start">
         <div class="matchList" fxFlex="20">
             <h3>Matches</h3>

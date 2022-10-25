@@ -5,6 +5,8 @@ import { Team } from 'src/app/interfaces/teams.interface';
 import { TeamService } from 'src/app/services/team.service';
 import { PlayersService } from 'src/app/services/players.service';
 import { ScheduleResponse, Standard } from 'src/app/interfaces/schedule.interface';
+import { Stats } from 'src/app/interfaces/player-stats.interface';
+import { ChartData } from 'src/app/interfaces/data.interface';
 
 @Component({
   selector: 'app-team-details',
@@ -18,6 +20,7 @@ export class TeamDetailsComponent implements OnInit {
   teamWwrapper: Team | undefined;
   teamDetails: Team = {} as Team;
   teamRoster: Player[] = [];
+  playerStats: Stats[] = [];
   year: number = 0;
   teamSchedule: ScheduleResponse = {} as ScheduleResponse;
   colorPpal: string = '';
@@ -26,6 +29,7 @@ export class TeamDetailsComponent implements OnInit {
   colorTexto: string = '';
   yearList : number[] = [];
   currentYear: number = new Date().getFullYear();
+  datos: ChartData[] = [];
 
   constructor(private teamService: TeamService, private router: Router, private playerService: PlayersService, private route: ActivatedRoute) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -47,10 +51,17 @@ export class TeamDetailsComponent implements OnInit {
       this.teamService.getTeamRoster(this.year, teamUrlName).subscribe(rosterResponse => {
         this.playerService.getPlayerList(this.year).subscribe(allPlayersResponse => {
           this.teamRoster = allPlayersResponse.league.standard.filter(player => rosterResponse.league.standard.players.map(playerFlat => playerFlat.personId).includes(player.personId));
+          this.teamRoster.forEach(player => {
+            this.playerService.getStats(this.year, player.personId).subscribe(statResponse => {
+              this.playerStats.push(statResponse.league.standard.stats)
+              this.datos = [...this.datos, {"name": player.firstName, "value": parseInt(statResponse.league.standard.stats.regularSeason.season.find(season => season.seasonYear == this.year)?.teams.find(team => team.teamId == this.teamDetails.teamId)?.points)}];
+            });
+          })
         })
       })
-      this.teamService.getTeamSchedule(this.year, teamUrlName).subscribe(response => this.teamSchedule = response)
       this.setColours();
+      this.teamService.getTeamSchedule(this.year, teamUrlName).subscribe(response => this.teamSchedule = response)
+      debugger;
     })
   }
 

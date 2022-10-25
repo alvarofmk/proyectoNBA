@@ -12,6 +12,8 @@ import { FrontPageComponent } from './components/front-page/front-page.component
 import { DetailsPlayersComponent } from './components/details-players/details-players.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { MaterialImportsModule } from './material-imports/material-imports.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ScaleLinear, ScalePoint, ScaleTime } from 'd3-scale';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { MaterialImportsModule } from './material-imports/material-imports.modul
     FlexLayoutModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
