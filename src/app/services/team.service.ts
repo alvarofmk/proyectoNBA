@@ -11,17 +11,17 @@ import { TeamResponse } from '../interfaces/teams.interface';
 })
 export class TeamService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  public getTeams(year: number):Observable<TeamResponse>{
+  public getTeams(year: number): Observable<TeamResponse> {
     return this.http.get<TeamResponse>(`${environment.URL_BASE_API}/10s/prod/v1/${year}/teams.json`);
   }
 
-  public getTeamRoster(year: number, teamName: string):Observable<TeamRosterResponse>{
+  public getTeamRoster(year: number, teamName: string): Observable<TeamRosterResponse> {
     return this.http.get<TeamRosterResponse>(`${environment.URL_BASE_API}/10s/prod/v1/${year}/teams/${teamName}/roster.json`);
   }
 
-  public getTeamSchedule(year: number, teamName: string):Observable<ScheduleResponse>{
+  public getTeamSchedule(year: number, teamName: string): Observable<ScheduleResponse> {
     return this.http.get<ScheduleResponse>(`${environment.URL_BASE_API}/10s/prod/v1/${year}/teams/${teamName}/schedule.json`);
   }
 }

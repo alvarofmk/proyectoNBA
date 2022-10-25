@@ -1,4 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
+    <div>
+        <button id="volver" mat-raised-button routerLink="/players">VOLVER</button>
+    </div>
+
     <div class="mainHeader" fxLayout="column" fxLayoutAlign="space-between center">
         <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png"
             alt="Logo nba">
@@ -14,12 +18,205 @@
         </div>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
-        <div>
-            <ngx-charts-bar-vertical [view]="[800,200]" [results]="datos" [xAxisLabel]="'Jugador'"
-                [yAxisLabel]="'Puntos'" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                [yAxis]="true" [animations]="false">
-            </ngx-charts-bar-vertical>
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
+        <mat-form-field>
+            <mat-label>Año</mat-label>
+            <mat-select [(ngModel)]="year" (selectionChange)="changeYear()">
+                <mat-option *ngFor="let yearSelect of yearList" [value]="yearSelect">
+                    {{yearSelect}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 20px;">
+            <mat-label>Jugador 1</mat-label>
+            <mat-select [(ngModel)]="player1" (selectionChange)="showStats()">
+                <mat-option *ngFor="let player of playerList" [value]="player">
+                    <mat-list>
+                        <mat-list-item>
+                            <img mat-card-image [src]="viewImg(player.personId)" style="width: 50px;" alt="Player photo"
+                                onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
+                            {{player.firstName}} {{player.lastName}}
+                        </mat-list-item>
+                    </mat-list>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 20px;">
+            <mat-label>Jugador 2</mat-label>
+            <mat-select [(ngModel)]="player2" (selectionChange)="showStats()">
+                <mat-option *ngFor="let player of playerList" [value]="player">
+                    <mat-list>
+                        <mat-list-item>
+                            <img mat-card-image [src]="viewImg(player.personId)" style="width: 50px;" alt="Player photo"
+                                onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
+                            {{player.firstName}} {{player.lastName}}
+                        </mat-list-item>
+                    </mat-list>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" *ngIf="mostrar">
+        <h2>ESTADÍSTICAS HASTA {{year}}</h2>
+
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
+            <button mat-raised-button (click)="showStats1()">POR PARTIDO</button>
+            <button mat-raised-button (click)="showStats2()">DE TIRO</button>
+            <button mat-raised-button (click)="showStats3()">TOTALES</button>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;"
+            *ngIf="mostrar1">
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
+                <ngx-charts-bar-horizontal-stacked [view]="[800,200]" [results]="porPartido" [legend]="true"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true">
+                </ngx-charts-bar-horizontal-stacked>
+            </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;"
+            *ngIf="mostrar2">
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;">
+                <ngx-charts-bar-horizontal-2d [view]="[800,200]" [results]="tirosCampo" [xAxisLabel]="'Jugador'"
+                    [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+                    [animations]="false">
+                </ngx-charts-bar-horizontal-2d>
+                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosCampo" [xAxisLabel]="'Jugador'"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false">
+                </ngx-charts-bar-vertical>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;">
+                <ngx-charts-bar-horizontal-2d [view]="[800,200]" [results]="tirosTres" [xAxisLabel]="'Jugador'"
+                    [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+                    [animations]="false">
+                </ngx-charts-bar-horizontal-2d>
+                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosTres" [xAxisLabel]="'Jugador'"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false">
+                </ngx-charts-bar-vertical>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;">
+                <ngx-charts-bar-horizontal-2d [view]="[800,200]" [results]="tirosLibres" [xAxisLabel]="'Jugador'"
+                    [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+                    [animations]="false">
+                </ngx-charts-bar-horizontal-2d>
+                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosLibres" [xAxisLabel]="'Jugador'"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;"
+            *ngIf="mostrar3">
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
+                <div class="stats">
+                    <h3>PARTIDOS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="partidos" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Partidos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+
+                <div class="stats">
+                    <h3>MINUTOS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="minutos" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Minutos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
+                <div class="stats">
+                    <h3>PUNTOS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="puntos" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Puntos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+
+                <div class="stats">
+                    <h3>ASISTENCIAS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="asistencias" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Asistencias'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
+                <div class="stats">
+                    <h3>BLOQUEOS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="bloqueos" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Bloqueos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+
+                <div class="stats">
+                    <h3>ROBOS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="robos" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Robos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+
+                <div class="stats">
+                    <h3>PÉRDIDAS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="perdidas" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Pérdidas'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
+                <div class="stats">
+                    <h3>REBOTES OFENSIVOS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="rebotesOf" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Rebotes ofensivos'" [showXAxisLabel]="true" [showYAxisLabel]="true"
+                        [xAxis]="true" [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+
+                <div class="stats">
+                    <h3>REBOTES DEFENSIVOS</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="rebotesDef" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Rebotes defensivos'" [showXAxisLabel]="true" [showYAxisLabel]="true"
+                        [xAxis]="true" [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+
+                <div class="stats">
+                    <h3>REBOTES TOTALES</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="rebotes" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Rebotes totales'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
+                <div class="stats">
+                    <h3>DOBLES-DOBLES</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="dd" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Dobles-dobles'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+
+                <div class="stats">
+                    <h3>TRIPLES-DOBLES</h3>
+                    <ngx-charts-bar-vertical [view]="[400,200]" [results]="td" [xAxisLabel]="'Jugador'"
+                        [yAxisLabel]="'Triples-dobles'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
+                        [yAxis]="true" [animations]="false">
+                    </ngx-charts-bar-vertical>
+                </div>
+            </div>
         </div>
     </div>
 </div>
