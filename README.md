@@ -1,3 +1,18 @@
+# DESCRIPCIÓN:
+Página web con información de equipos y jugadores de la NBA, en la que se puede consultar el calendario, estadísticas y jugadores de un equipo, así como los
+detalles y estadísticas de un jugador, además de poder comparar dos jugadores.
+
+# AUTORES:
+## Álvaro Franco Martinez
+https://github.com/alvarofmk
+
+## Mario Ruiz López
+https://github.com/PlayerMario
+
+# FUNCIONALIDADES
+[PORTADA:](src/img/portada.png)
+
+
 # Nba
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
