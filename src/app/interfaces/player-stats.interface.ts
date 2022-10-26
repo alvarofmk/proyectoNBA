@@ -79,7 +79,7 @@ export interface CareerSummary {
     td3: string;
 }
 
-export interface Team {
+export interface TeamSeasonStats {
     teamId: string;
     ppg: string;
     rpg: string;
@@ -150,7 +150,7 @@ export interface Total {
 
 export interface Season {
     seasonYear: number;
-    teams: Team[];
+    teams: TeamSeasonStats[];
     total: Total;
 }
 

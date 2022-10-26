@@ -13,8 +13,8 @@ import { DetailsPlayersComponent } from './components/details-players/details-pl
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { MaterialImportsModule } from './material-imports/material-imports.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ScaleLinear, ScalePoint, ScaleTime } from 'd3-scale';
 import { CompareStatsComponent } from './components/compare-stats/compare-stats.component';
-
 
 @NgModule({
   declarations: [

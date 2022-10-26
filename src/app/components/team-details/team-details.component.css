@@ -101,7 +101,13 @@ button {
 mat-card-header{
     text-align: center;
 }
-mat-form-field{
-    margin-left: 5%;
-    margin-top: 2%;
+.graphAndButtons{
+    padding: 5%;
+    padding-top: 0%;
+    width: 88%;
+    height: 400px;
+    margin-bottom: 8%;
+}
+.selects{
+    margin-left: 2.5%;
 }
