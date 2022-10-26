@@ -14,16 +14,12 @@ import { TeamService } from 'src/app/services/team.service';
 export class PlayersComponent implements OnInit {
 
   teams = new FormControl('');
-  colorPpal: string = '';
-  colorTexto: string = '';
   filteredTeamList: Team[] = [];
   filteredPlayerList: Player[] = [];
   playerList: Player[] = [];
   teamList: Team[] = [];
   yearList: number[] = [];
   year: number = 0;
-  teamURLbase1: string = 'https://cdn.nba.com/logos/nba/';
-  teamURLbase2: string = '/global/L/logo.svg';
 
   constructor(private playerService: PlayersService, private teamService: TeamService) { }
 
@@ -42,10 +38,6 @@ export class PlayersComponent implements OnInit {
     for (let i = 1; i < 13; i++) {
       this.yearList.push(this.year - i);
     }
-  }
-
-  viewImg(id: string) {
-    return `https://cdn.nba.com/headshots/nba/latest/1040x760/${id}.png`
   }
 
   changeYear() {

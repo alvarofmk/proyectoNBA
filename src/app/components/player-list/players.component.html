@@ -2,7 +2,7 @@
     <div>
         <button id="volver" mat-raised-button routerLink="/">VOLVER</button>
     </div>
-    
+
     <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba"
         [routerLink]="['/']">
     <div fxFlexAlign="end" fxLayout="row" fxLayoutAlign=" end" fxLayoutGap="20px" class="headerLinks">
@@ -38,17 +38,6 @@
 <button mat-raised-button id="compare" [routerLink]="['/compare-players']">Comparador de jugadores</button>
 
 <div id="contenedor" fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <div *ngFor="let player of filteredPlayerList" style="width: 275px;">
-        <mat-card class="example-card" [routerLink]="['/details-player', player.personId, year]">
-            <img mat-card-image [src]="viewImg(player.personId)" style="width: 250px;" alt="Player photo"
-                onerror="this.src='https://www.pngall.com/wp-content/uploads/2/NBA-PNG-Free-Image.png'" />
-
-            <mat-card-content style="margin-top: 10px;">
-                <h2>{{player.firstName}} {{player.lastName}}</h2>
-                <img mat-card-image id="filter" [src]="teamURLbase1 + player.teamId + teamURLbase2" style="width: 70px;"
-                    alt="Team logo">
-                <h3>{{showTeam(player.teamId)}}</h3>
-            </mat-card-content>
-        </mat-card>
-    </div>
+    <app-one-player *ngFor="let player of filteredPlayerList" style="width: 275px;" [player]="player" [year]="year">
+    </app-one-player>
 </div>

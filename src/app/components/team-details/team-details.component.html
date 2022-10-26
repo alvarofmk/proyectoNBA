@@ -22,14 +22,36 @@
             <h1>{{teamDetails.fullName}}</h1>
         </div>
     </div>
-    <mat-form-field>
-        <mat-label>Año</mat-label>
-        <mat-select [(ngModel)]="year" (selectionChange)="changeYear()">
-            <mat-option *ngFor="let yearSelect of yearList" [value]="yearSelect">
-            {{yearSelect}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <div fxLayout="column" fxLayoutAlign="start" class="graphAndButtons">
+        <div class="selects" fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field>
+                <mat-label>Año</mat-label>
+                <mat-select [(ngModel)]="year" (selectionChange)="changeYear()">
+                    <mat-option *ngFor="let yearSelect of yearList" [value]="yearSelect">
+                    {{yearSelect}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Estadisticas</mat-label>
+                <mat-select [(ngModel)]="year">
+                    <mat-option *ngFor="let stat of statsExample | keyvalue" [value]="stat.key">
+                        {{stat.key}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <ngx-charts-bar-vertical
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="false"
+            [results]="datos"
+            [showYAxisLabel]="true"
+            yAxisLabel="Puntos"
+            [showGridLines]="false"
+            [customColors]="customColor">
+        </ngx-charts-bar-vertical>
+    </div>
     <div fxLayout="row" fxLayoutAlign="space-around start">
         <div class="matchList" fxFlex="20">
             <h3>Matches</h3>
