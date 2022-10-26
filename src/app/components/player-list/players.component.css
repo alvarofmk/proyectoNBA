@@ -3,18 +3,6 @@
     margin: 0 auto;
 }
 
-.mat-card {
-    margin-top: 50px;
-}
-
-.mat-card-image {
-    margin: 0 auto;
-}
-
-#filter {
-    filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 5));
-}
-
 .mainHeader {
     background-color: black;
     width: 100%;
@@ -60,8 +48,9 @@ mat-form-field {
 
 #compare {
     margin: 10px;
-    background-color: rgb(29, 66, 138);
+    background-color: rgb(200, 16, 46);
     color: white;
+    float: right;
 }
 
 #volver {
