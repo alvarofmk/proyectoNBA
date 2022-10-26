@@ -10,8 +10,23 @@ https://github.com/alvarofmk
 https://github.com/PlayerMario
 
 # FUNCIONALIDADES
-[PORTADA:](src/img/portada.png)
+[PORTADA](src/img/portada.png)
+Muestra el menú principal para elegir jugadores o equipos.
 
+[EQUIPOS](src/img/equipos.png)
+Listado de equipos según el año. Se puede seleccionar uno para ver sus detalles.
+
+[DETALLES-EQUIPOS](src/img/detalles-equipos.png)
+Detalles del equipo en que se muestran los jugadores, el calendario y las estadísticas por jugador.
+
+[JUGADORES](src/img/jugadores.png)
+Listado de jugadores según el año. Se puede seleccionar uno para ver sus detalles.
+
+[DETALLES-JUGADORES](src/img/detalles-jugadores.png)
+Detalles del jugador en que se muestran la información personal, las estadísticas por jugador.
+
+[COMPARADOR-JUGADORES](src/img/comparador.png)
+Se eligen dos jugadores del listado, el año, y se selecciona las estadísticas que se quieran comparar.
 
 # Nba
 
