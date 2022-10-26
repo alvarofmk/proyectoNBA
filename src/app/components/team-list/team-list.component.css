@@ -1,9 +1,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-mat-card img{
-    height: 400px;
-}
-mat-card{
-    width: 400px;
+app-team-single-card{
+    width: 250px;
     margin-bottom: 15px;
     font-family: 'nba' !important;
 }

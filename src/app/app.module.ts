@@ -15,7 +15,11 @@ import { MaterialImportsModule } from './material-imports/material-imports.modul
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ScaleLinear, ScalePoint, ScaleTime } from 'd3-scale';
 import { CompareStatsComponent } from './components/compare-stats/compare-stats.component';
+
+import { TeamSingleCardComponent } from './components/team-single-card/team-single-card.component';
+import { TeamMatchSingleCardComponent } from './components/team-match-single-card/team-match-single-card.component';
 import { OnePlayerComponent } from './components/one-player/one-player.component';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +30,8 @@ import { OnePlayerComponent } from './components/one-player/one-player.component
     DetailsPlayersComponent,
     TeamDetailsComponent,
     FrontPageComponent,
+    TeamSingleCardComponent,
+    TeamMatchSingleCardComponent,
     OnePlayerComponent
   ],
   imports: [

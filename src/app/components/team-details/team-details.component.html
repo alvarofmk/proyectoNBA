@@ -55,14 +55,7 @@
     <div fxLayout="row" fxLayoutAlign="space-around start">
         <div class="matchList" fxFlex="20">
             <h3>Matches</h3>
-            <div *ngFor="let match of teamSchedule.league.standard" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center" class="matchitem">
-                <p class="matchdate">{{match.startTimeUTC | date:'LLL d Y'}}</p>
-                <img [src]="teamURLbase1 + match.hTeam.teamId + teamURLbase2" alt="Logo local">
-                <p class="score" [ngClass]="{winner: getWinner(match)==1}">{{match.hTeam.score}}</p>
-                <p class="vs">-</p>
-                <p class="score" [ngClass]="{winner: getWinner(match)==2}">{{match.vTeam.score}}</p>
-                <img [src]="teamURLbase1 + match.vTeam.teamId + teamURLbase2" alt="Logo visitante">
-            </div>
+            <app-team-match-single-card *ngFor="let match of teamSchedule.league.standard" [match]="match"></app-team-match-single-card>
         </div>
         <div class="playerList" fxLayout="column" fxLayoutGap="10px" fxFlex="50">
             <h3>Players</h3>
