@@ -1,0 +1,8 @@
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center" class="matchitem">
+    <p class="matchdate">{{match.startTimeUTC | date:'LLL d Y'}}</p>
+    <img [src]="teamURLbase1 + match.hTeam.teamId + teamURLbase2" alt="Logo local">
+    <p class="score" [ngClass]="{winner: getWinner(match)==1}">{{match.hTeam.score}}</p>
+    <p class="vs">-</p>
+    <p class="score" [ngClass]="{winner: getWinner(match)==2}">{{match.vTeam.score}}</p>
+    <img [src]="teamURLbase1 + match.vTeam.teamId + teamURLbase2" alt="Logo visitante">
+</div>

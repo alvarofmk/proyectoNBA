@@ -20,13 +20,5 @@
   </mat-select>
 </mat-form-field>
 <div class="container" fxLayout="row wrap" fxLayoutAlign="space-around center">
-  <mat-card class="example-card" *ngFor="let team of teamList">
-    <mat-card-header fxLayout="column" fxLayoutAlign=" center">
-      <mat-card-title>{{team.fullName}}</mat-card-title>
-      <mat-card-subtitle>{{team.city}}</mat-card-subtitle>
-    </mat-card-header>
-    <a [routerLink]="'/teams/'+ year + '/' + team.urlName">
-      <img mat-card-image [src]="teamURLbase1 + team.teamId + teamURLbase2" alt="Logo">
-    </a>
-  </mat-card>
+  <app-team-single-card *ngFor="let team of teamList" [team]="team" [year]="year"></app-team-single-card>
 </div>

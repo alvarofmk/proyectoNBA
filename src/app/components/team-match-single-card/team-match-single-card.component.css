@@ -1,0 +1,21 @@
+.winner{
+    color: green;
+}
+.matchitem{
+    margin-top: 20px;
+}
+.matchitem:first-of-type{
+    margin-top: 40px;
+}
+.matchitem p{
+    margin: 0px;
+
+}
+.matchitem img{
+    height: 50px;
+}
+.score{
+    font-family: 'nba';
+    font-weight: bold;
+    font-size: 1.2em;
+}
