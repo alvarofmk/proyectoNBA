@@ -1,14 +1,19 @@
 <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
+    <div>
+        <button id="volver" mat-raised-button routerLink="/players">VOLVER</button>
+    </div>
+
     <div class="mainHeader" fxLayout="column" fxLayoutAlign="space-between center">
-        <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png" alt="Logo nba" [routerLink]="['/']">
+        <img src="https://graffica.info/wp-content/uploads/2017/08/NBA-logo-png-download-free-1200x675.png"
+            alt="Logo nba" [routerLink]="['/']">
         <div fxFlexAlign="end" fxLayout="row" fxLayoutAlign=" end" fxLayoutGap="20px" class="headerLinks">
             <a routerLink="/teams" class="mainLink">
                 <p>Teams</p>
-                <div class="whiteButton"></div>
+                <div class="whiteButton" [style]="colorPpal"></div>
             </a>
-                <a routerLink="/players" class="mainLink">
+            <a routerLink="/players" class="mainLink">
                 <p>Players</p>
-            <div class="whiteButton"></div>
+                <div class="whiteButton" [style]="colorPpal"></div>
             </a>
         </div>
     </div>
@@ -56,9 +61,9 @@
 
     <div id="stats" [style]="colorSec + colorLet">
         <div fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex="100">
-            <button mat-raised-button [style]="colorPpal + colorLet" (click)="showStats1()">HASTA {{year}}</button>
+            <button id="opcion" mat-raised-button [style]="colorPpal + colorLet" (click)="showStats1()">HASTA {{year}}</button>
             <h2>ESTADÍSTICAS</h2>
-            <button mat-raised-button [style]="colorPpal + colorLet" (click)="showStats2()">POR TEMPORADA</button>
+            <button id="opcion" mat-raised-button [style]="colorPpal + colorLet" (click)="showStats2()">POR TEMPORADA</button>
         </div>
     </div>
 
@@ -175,7 +180,8 @@
         </div>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" *ngIf="stats2" style="margin-top: 10px; width: 100%;">
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" *ngIf="stats2"
+        style="margin-top: 10px; width: 100%;">
         <mat-form-field>
             <mat-label>Año</mat-label>
             <mat-select [(ngModel)]="yearStats" (selectionChange)="selectYear()">

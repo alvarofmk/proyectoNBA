@@ -12,10 +12,14 @@ import { FrontPageComponent } from './components/front-page/front-page.component
 import { DetailsPlayersComponent } from './components/details-players/details-players.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { MaterialImportsModule } from './material-imports/material-imports.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { CompareStatsComponent } from './components/compare-stats/compare-stats.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    CompareStatsComponent,
     TeamListComponent,
     PlayersComponent,
     DetailsPlayersComponent,
@@ -24,14 +28,14 @@ import { MaterialImportsModule } from './material-imports/material-imports.modul
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MaterialImportsModule,
     FlexLayoutModule,
-    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

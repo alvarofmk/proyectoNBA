@@ -1,6 +1,17 @@
-button {
+#opcion {
     font-size: 1.3em;
+    font-weight: bold;
     width: 10%;
+}
+
+#volver {
+    margin: 0 auto;
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    background-color: rgb(29, 66, 138);
+    color: white;
+    z-index: 99;
 }
 
 #player {
@@ -76,21 +87,24 @@ th {
     background-color: rgb(200, 200, 200);
 }
 
-.mainHeader{
+.mainHeader {
     background-color: black;
     width: 100%;
     height: 300px;
 }
-.mainHeader img{
+
+.mainHeader img {
     height: 80%;
 }
-.mainHeader a{
+
+.mainHeader a {
     text-decoration: none;
     color: white;
     font-family: 'nba';
     font-size: 2em;
 }
-.mainLink .whiteButton{
+
+.mainLink .whiteButton {
     background-color: white;
     height: 2px;
     -webkit-transition: height 0.2s ease;
@@ -98,16 +112,20 @@ th {
     -o-transition: height 0.2s ease;
     transition: height 0.2s ease;
 }
-.mainLink:hover .whiteButton{
+
+.mainLink:hover .whiteButton {
     height: 15px;
 }
-.headerLinks{
+
+.headerLinks {
     margin-right: 5%;
 }
-mat-card-header{
+
+mat-card-header {
     text-align: center;
 }
-mat-form-field{
+
+mat-form-field {
     margin-left: 5%;
     margin-top: 2%;
 }
