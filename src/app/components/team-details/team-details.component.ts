@@ -5,7 +5,7 @@ import { Team } from 'src/app/interfaces/teams.interface';
 import { TeamService } from 'src/app/services/team.service';
 import { PlayersService } from 'src/app/services/players.service';
 import { ScheduleResponse, Standard } from 'src/app/interfaces/schedule.interface';
-import { Stats, StatsResponse, TeamSeasonStats } from 'src/app/interfaces/player-stats.interface';
+import { League, Stats, StatsResponse, TeamSeasonStats } from 'src/app/interfaces/player-stats.interface';
 import { ChartData, ColorData } from 'src/app/interfaces/data.interface';
 
 @Component({
@@ -20,8 +20,10 @@ export class TeamDetailsComponent implements OnInit {
   teamWwrapper: Team | undefined;
   teamDetails: Team = {} as Team;
   teamRoster: Player[] = [];
-  playerStats: Stats[] = [];
+  leagueinitial: League = {} as League;
+  playerStats: Map<string, League> = new Map([ [ '', this.leagueinitial ] ]);
   year: number = 0;
+  stat: string = '';
   teamSchedule: ScheduleResponse = {} as ScheduleResponse;
   rbgPpal: string = '';
   colorPpal: string = '';
@@ -33,6 +35,7 @@ export class TeamDetailsComponent implements OnInit {
   datos: ChartData[] = [];
   customColor: ColorData[] = [];
   statsExample: TeamSeasonStats | undefined;
+  axisLegend: string = '';
 
   constructor(private teamService: TeamService, private router: Router, private playerService: PlayersService, private route: ActivatedRoute) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -57,32 +60,55 @@ export class TeamDetailsComponent implements OnInit {
           this.teamRoster = allPlayersResponse.league.standard.filter(player => rosterResponse.league.standard.players.map(playerFlat => playerFlat.personId).includes(player.personId));
           this.teamRoster.forEach(player => {
             this.playerService.getStats(this.year, player.personId).subscribe(statResponse => {
-              this.playerStats.push(statResponse.league.standard.stats)
+              debugger;
+              this.playerStats.set(player.personId, statResponse.league)
               if(this.statsExample == undefined){
-                this.statsExample = this.playerStats[0].regularSeason.season[0].teams[0];
+                let playerStatWrapper = this.playerStats.get(player.personId)
+                if(playerStatWrapper != undefined){
+
+                  this.statsExample = playerStatWrapper.standard.stats.regularSeason.season[0].teams[0];
+                  debugger;
+                }
               }
-              this.datos = [...this.datos, {"name": player.firstName, "value": this.getStatAsValue(statResponse, this.year, this.teamDetails.teamId)}];
+              this.datos = [...this.datos, {"name": player.firstName, "value": this.getStatAsValue(statResponse.league, this.year, this.teamDetails.teamId, this.stat)}];
               this.customColor = [...this.customColor, {"name": player.firstName, "value": this.rbgPpal}]
             });
           })
         })
       })
       this.teamService.getTeamSchedule(this.year, teamUrlName).subscribe(response => this.teamSchedule = response)
-      debugger;
     })
   }
 
-  getStatAsValue(response: StatsResponse, year: number, teamid: string){
+  getStatAsValue(response: League, year: number, teamid: string, stat: string){
     let finalStatsChecked: TeamSeasonStats = {} as TeamSeasonStats;
-    let season = response.league.standard.stats.regularSeason.season.find(season => season.seasonYear == year);
+    let season = response.standard.stats.regularSeason.season.find(season => season.seasonYear == year);
+    let resultado: number = 0;
     if(season != undefined){
       let seasonChecked = season;
       let finalStats = seasonChecked.teams.find(team => team.teamId == teamid);
       if(finalStats != undefined){
         finalStatsChecked = finalStats;
+        type statKey = keyof typeof finalStatsChecked;
+        let statPicked = stat as statKey;
+        resultado = parseInt(finalStatsChecked[statPicked]);
       }
     }
-    return parseInt(finalStatsChecked.points);
+    debugger;
+    return resultado;
+  }
+
+  updateStats(){
+    this.axisLegend = this.stat;
+    this.datos = [];
+    this.teamRoster.forEach(player => {
+      let leagueWrapper = this.playerStats.get(player.personId);
+      let league: League = {} as League;
+      if(leagueWrapper != undefined){
+        league = leagueWrapper;
+      }
+      this.datos = [...this.datos, {"name": player.firstName, "value": this.getStatAsValue(league, this.year, this.teamDetails.teamId, this.stat)}]
+    });
   }
 
   viewImg(id: string) {

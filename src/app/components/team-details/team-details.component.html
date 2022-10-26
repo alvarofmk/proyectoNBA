@@ -34,7 +34,7 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Estadisticas</mat-label>
-                <mat-select [(ngModel)]="year">
+                <mat-select [(ngModel)]="stat" (selectionChange)="updateStats()">
                     <mat-option *ngFor="let stat of statsExample | keyvalue" [value]="stat.key">
                         {{stat.key}}
                     </mat-option>
@@ -47,7 +47,7 @@
             [legend]="false"
             [results]="datos"
             [showYAxisLabel]="true"
-            yAxisLabel="Puntos"
+            [yAxisLabel]="axisLegend"
             [showGridLines]="false"
             [customColors]="customColor">
         </ngx-charts-bar-vertical>
