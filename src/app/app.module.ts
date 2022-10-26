@@ -14,10 +14,12 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
 import { MaterialImportsModule } from './material-imports/material-imports.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ScaleLinear, ScalePoint, ScaleTime } from 'd3-scale';
+import { CompareStatsComponent } from './components/compare-stats/compare-stats.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CompareStatsComponent,
     TeamListComponent,
     PlayersComponent,
     DetailsPlayersComponent,
@@ -26,12 +28,11 @@ import { ScaleLinear, ScalePoint, ScaleTime } from 'd3-scale';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MaterialImportsModule,
     FlexLayoutModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgxChartsModule

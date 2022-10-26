@@ -10,6 +10,7 @@ import { TeamService } from 'src/app/services/team.service';
   templateUrl: './players.component.html',
   styleUrls: ['./players.component.css']
 })
+
 export class PlayersComponent implements OnInit {
 
   teams = new FormControl('');
@@ -75,5 +76,150 @@ export class PlayersComponent implements OnInit {
     } else {
       this.filteredPlayerList = listAux
     }
+  }
+
+  background(id: string) {
+    switch (id) {
+      case '1610612737':
+        this.colorPpal = 'background-color: rgb(200, 16, 46);'
+        break;
+      case '1610612738':
+        this.colorPpal = 'background-color: rgb(0, 122, 51);'
+        break;
+      case '1610612751':
+        this.colorPpal = 'background-color: rgb(0, 0, 0);'
+        this.colorTexto = 'color: white'
+        break;
+      case '1610612766':
+        this.colorPpal = 'background-color: rgb(29, 17, 96);'
+        this.colorTexto = 'color: white'
+        break;
+      case '1610612741':
+        this.colorPpal = 'background-color: rgb(206, 17, 65);'
+        break;
+      case '1610612739':
+        this.colorPpal = 'background-color: rgb(134, 0, 56);'
+        this.colorTexto = 'color: black'
+        break;
+      case '1610612742':
+        this.colorPpal = 'background-color: rgb(0, 83, 188);'
+        this.colorTexto = 'color: black'
+        break;
+      case '1610612743':
+        this.colorPpal = 'background-color: rgb(13, 34, 64);'
+        this.colorTexto = 'color: white'
+        break;
+      case '1610612765':
+        this.colorPpal = 'background-color: rgb(200,16,46);'
+        break;
+      case '1610612744':
+        this.colorPpal = 'background-color: rgb(29, 66, 138);'
+        break;
+      case '1610612745':
+        this.colorPpal = 'background-color: rgb(206,17,65);'
+        this.colorTexto = 'color: black'
+        break;
+      case '1610612754':
+        this.colorPpal = 'background-color: rgb(0, 45, 98);'
+        this.colorTexto = 'color: white'
+        break;
+      case '1610612746':
+        this.colorPpal = 'background-color: rgb(200,16,46);'
+        break;
+      case '1610612747':
+        this.colorPpal = 'background-color: rgb(85, 37, 130);'
+        break;
+      case '1610612763':
+        this.colorPpal = 'background-color: rgb(93, 118, 169);'
+        this.colorTexto = 'color: black'
+        break;
+      case '1610612748':
+        this.colorPpal = 'background-color: rgb(152, 0, 46);'
+        break;
+      case '1610612749':
+        this.colorPpal = 'background-color: rgb(0, 71, 27);'
+        break;
+      case '1610612750':
+        this.colorPpal = 'background-color: rgb(12, 35, 64);'
+        this.colorTexto = 'color: white'
+        break;
+      case '1610612740':
+        this.colorPpal = 'background-color: rgb(0, 22, 65);'
+        this.colorTexto = 'color: white'
+        break;
+      case '1610612752':
+        this.colorPpal = 'background-color: rgb(0, 107, 182);'
+        break;
+      case '1610612760':
+        this.colorPpal = 'background-color: rgb(0, 125, 195);'
+        break;
+      case '1610612753':
+        this.colorPpal = 'background-color: rgb(0, 125, 197);'
+        break;
+      case '1610612755':
+        this.colorPpal = 'background-color: rgb(0, 107, 182);'
+        break;
+      case '1610612756':
+        this.colorPpal = 'background-color: rgb(29, 17, 96);'
+        this.colorTexto = 'color: white'
+        break;
+      case '1610612757':
+        this.colorPpal = 'background-color: rgb(224, 58, 62);'
+        this.colorTexto = 'color: black'
+        break;
+      case '1610612758':
+        this.colorPpal = 'background-color: rgb(91,43,130);'
+        break;
+      case '1610612759':
+        this.colorPpal = 'background-color: rgb(196, 206, 211);'
+        this.colorTexto = 'color: black'
+        break;
+      case '1610612761':
+        this.colorPpal = 'background-color: rgb(206, 17, 65);'
+        this.colorTexto = 'color: black'
+        break;
+      case '1610612762':
+        this.colorPpal = 'background-color: rgb(0, 43, 92);'
+        this.colorTexto = 'color: black'
+        break;
+      case '1610612764':
+        this.colorPpal = 'background-color: rgb(0,43,92);'
+        this.colorTexto = 'color: white'
+        break;
+    }
+    return this.colorPpal
+  }
+
+  color(id: string) {
+    switch (id) {
+      case '1610612751':
+        this.colorTexto = 'color: white;';
+        break;
+      case '1610612766':
+        this.colorTexto = 'color: white;';
+        break;
+      case '1610612742':
+        this.colorTexto = 'color: white;';
+        break;
+      case '1610612743':
+        this.colorTexto = 'color: white;';
+        break;
+      case '1610612754':
+        this.colorTexto = 'color: white;';
+        break;
+      case '1610612750':
+        this.colorTexto = 'color: white;';
+        break;
+      case '1610612740':
+        this.colorTexto = 'color: white;';
+        break;
+      case '1610612756':
+        this.colorTexto = 'color: white;';
+        break;
+      case '1610612764':
+        this.colorTexto = 'color: white;';
+        break;
+    }
+    return this.colorTexto
   }
 }
