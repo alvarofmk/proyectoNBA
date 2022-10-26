@@ -50,7 +50,7 @@ export class CompareStatsComponent implements OnInit {
   mostrar1 = false;
   mostrar2 = false;
   mostrar3 = false;
-  mostrar = false;
+  mostrarMenu = false;
 
   constructor(private playerService: PlayersService) {
   }
@@ -492,6 +492,6 @@ export class CompareStatsComponent implements OnInit {
   }
 
   showStats() {
-    this.mostrar = true;
+    this.mostrarMenu = true;
   }
 }
