@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Player } from 'src/app/interfaces/players.interface';
 import { Team } from 'src/app/interfaces/teams.interface';
-import { PlayersService } from 'src/app/services/players.service';
 import { TeamService } from 'src/app/services/team.service';
 
 @Component({
@@ -19,7 +18,7 @@ export class OnePlayerComponent implements OnInit {
   teamURLbase2: string = '/global/L/logo.svg';
   teamList: Team[] = [];
 
-  constructor(private playerService: PlayersService, private teamService: TeamService) { }
+  constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
     this.teamService.getTeams(this.year).subscribe(resp => {

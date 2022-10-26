@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
 import { DataCompare, GroupedDataCompare } from 'src/app/interfaces/data-compare.interface';
+import { ColorData } from 'src/app/interfaces/data.interface';
 import { CareerSummary } from 'src/app/interfaces/player-stats.interface';
 import { Player } from 'src/app/interfaces/players.interface';
 import { PlayersService } from 'src/app/services/players.service';
@@ -47,9 +50,10 @@ export class CompareStatsComponent implements OnInit {
   mostrar1 = false;
   mostrar2 = false;
   mostrar3 = false;
-  mostrar = false;
+  mostrarMenu = false;
 
-  constructor(private playerService: PlayersService) { }
+  constructor(private playerService: PlayersService) {
+  }
 
   ngOnInit(): void {
     this.year = new Date().getFullYear();
@@ -488,6 +492,6 @@ export class CompareStatsComponent implements OnInit {
   }
 
   showStats() {
-    this.mostrar = true;
+    this.mostrarMenu = true;
   }
 }

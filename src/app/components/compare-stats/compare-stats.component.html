@@ -59,7 +59,7 @@
         </mat-form-field>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" *ngIf="mostrar">
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" *ngIf="mostrarMenu">
         <h2>ESTADÍSTICAS HASTA {{year}}</h2>
 
         <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
@@ -72,40 +72,47 @@
             *ngIf="mostrar1">
             <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
                 <ngx-charts-bar-horizontal-stacked [view]="[1200,400]" [results]="porPartido" [legend]="true"
-                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true">
+                    [xAxisLabel]="'Media/Partido'" [yAxisLabel]="'Estadística'" [showXAxisLabel]="true"
+                    [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false" scheme="vivid">
                 </ngx-charts-bar-horizontal-stacked>
             </div>
         </div>
 
         <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;"
             *ngIf="mostrar2">
+            <h3>TIROS DE CAMPO</h3>
             <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;">
-                <ngx-charts-bar-horizontal-2d [view]="[800,200]" [results]="tirosCampo" [xAxisLabel]="'Jugador'"
+                <ngx-charts-bar-horizontal-2d [view]="[1200,200]" [results]="tirosCampo" [xAxisLabel]="'Cantidad'" [yAxisLabel]="'Jugador'"
                     [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
-                    [animations]="false">
+                    [animations]="false" scheme="vivid">
                 </ngx-charts-bar-horizontal-2d>
-                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosCampo" [xAxisLabel]="'Jugador'"
-                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false">
+                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosCampo" [xAxisLabel]="'Jugador'" [yAxisLabel]="'% Acierto'"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false"
+                    scheme="vivid">
                 </ngx-charts-bar-vertical>
             </div>
 
+            <h3>TIROS DE TRES</h3>
             <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;">
-                <ngx-charts-bar-horizontal-2d [view]="[800,200]" [results]="tirosTres" [xAxisLabel]="'Jugador'"
+                <ngx-charts-bar-horizontal-2d [view]="[1200,200]" [results]="tirosTres" [xAxisLabel]="'Cantidad'" [yAxisLabel]="'Jugador'"
                     [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
-                    [animations]="false">
+                    [animations]="false" scheme="vivid">
                 </ngx-charts-bar-horizontal-2d>
-                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosTres" [xAxisLabel]="'Jugador'"
-                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false">
+                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosTres" [xAxisLabel]="'Jugador'" [yAxisLabel]="'% Acierto'"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false"
+                    scheme="vivid">
                 </ngx-charts-bar-vertical>
             </div>
 
+            <h3>TIROS LIBRES</h3>
             <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100" style="margin-top: 10px;">
-                <ngx-charts-bar-horizontal-2d [view]="[800,200]" [results]="tirosLibres" [xAxisLabel]="'Jugador'"
+                <ngx-charts-bar-horizontal-2d [view]="[1200,200]" [results]="tirosLibres" [xAxisLabel]="'Cantidad'" [yAxisLabel]="'Jugador'"
                     [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
-                    [animations]="false">
+                    [animations]="false" scheme="vivid">
                 </ngx-charts-bar-horizontal-2d>
-                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosLibres" [xAxisLabel]="'Jugador'"
-                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false">
+                <ngx-charts-bar-vertical [view]="[400,200]" [results]="porcTirosLibres" [xAxisLabel]="'Jugador'" [yAxisLabel]="'% Acierto'"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [animations]="false"
+                    scheme="vivid">
                 </ngx-charts-bar-vertical>
             </div>
         </div>
@@ -117,7 +124,7 @@
                     <h3>PARTIDOS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="partidos" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Partidos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
 
@@ -125,7 +132,7 @@
                     <h3>MINUTOS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="minutos" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Minutos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
             </div>
@@ -135,7 +142,7 @@
                     <h3>PUNTOS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="puntos" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Puntos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
 
@@ -143,7 +150,7 @@
                     <h3>ASISTENCIAS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="asistencias" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Asistencias'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
             </div>
@@ -153,7 +160,7 @@
                     <h3>BLOQUEOS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="bloqueos" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Bloqueos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
 
@@ -161,7 +168,7 @@
                     <h3>ROBOS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="robos" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Robos'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
 
@@ -169,7 +176,7 @@
                     <h3>PÉRDIDAS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="perdidas" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Pérdidas'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
             </div>
@@ -179,7 +186,7 @@
                     <h3>REBOTES OFENSIVOS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="rebotesOf" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Rebotes ofensivos'" [showXAxisLabel]="true" [showYAxisLabel]="true"
-                        [xAxis]="true" [yAxis]="true" [animations]="false">
+                        [xAxis]="true" [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
 
@@ -187,7 +194,7 @@
                     <h3>REBOTES DEFENSIVOS</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="rebotesDef" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Rebotes defensivos'" [showXAxisLabel]="true" [showYAxisLabel]="true"
-                        [xAxis]="true" [yAxis]="true" [animations]="false">
+                        [xAxis]="true" [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
 
@@ -195,7 +202,7 @@
                     <h3>REBOTES TOTALES</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="rebotes" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Rebotes totales'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
             </div>
@@ -205,7 +212,7 @@
                     <h3>DOBLES-DOBLES</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="dd" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Dobles-dobles'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
 
@@ -213,7 +220,7 @@
                     <h3>TRIPLES-DOBLES</h3>
                     <ngx-charts-bar-vertical [view]="[400,200]" [results]="td" [xAxisLabel]="'Jugador'"
                         [yAxisLabel]="'Triples-dobles'" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
-                        [yAxis]="true" [animations]="false">
+                        [yAxis]="true" [animations]="false" scheme="vivid">
                     </ngx-charts-bar-vertical>
                 </div>
             </div>
